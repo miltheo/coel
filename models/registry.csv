@@ -1,0 +1,5 @@
+model_name,version,iri,registry_path,description,status,source_url
+COEL,1,https://w3id.org/coel/models/coel/1.0/,models/COEL/2.0/COEL Model v2.0.csv,Classification of Everyday Living Model Version 2.0,active,
+Behavioural Bout,1,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/,models/ActivInsights/Behavioural Bout/1.0/Behavioural Bout Model v1.0.csv,ActivInsights Behavioural Bout Model Version 1.0,active,
+Rest Activity,1,https://w3id.org/coel/models/activinsights/rest_activity/1.0/,models/ActivInsights/Rest Activity/1.0/Rest Activity Model v1.0.csv,ActivInsights Rest Activity Model Version 1.0,active,
+PA-compendium,2024-adults,,,2024 Compendium of Physical Activities for Adults,inactive,https://pacompendium.com/adult-compendium/

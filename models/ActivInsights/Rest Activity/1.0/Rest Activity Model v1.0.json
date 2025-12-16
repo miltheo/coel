@@ -1,0 +1,38 @@
+{
+  "modelName": "Rest Activity Model v1.0",
+  "modelId": "Rest Activity Model v1.0",
+  "version": "1.0",
+  "baseIRI": "https://w3id.org/coel/models/activinsights/rest_activity/1.0",
+  "labelKey": "label",
+  "parentKey": "parent_label",
+  "isOutputKey": "is_output",
+  "terms": [
+    {
+      "label": "rest_activity",
+      "description": "Root of the classification tree used in ActivInsights 24hr rest activity patterning.",
+      "is_output": false,
+      "iri": "https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest_activity"
+    },
+    {
+      "label": "non_wear",
+      "parent_label": "rest_activity",
+      "description": "Measurement device not worn.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/rest_activity/1.0#non_wear"
+    },
+    {
+      "label": "wake",
+      "parent_label": "rest_activity",
+      "description": "Period of active physical behaviours.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake"
+    },
+    {
+      "label": "rest",
+      "parent_label": "rest_activity",
+      "description": "Period of rest - a rest interval, part of a rest interval or other inactive physical behaviours.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest"
+    }
+  ]
+}

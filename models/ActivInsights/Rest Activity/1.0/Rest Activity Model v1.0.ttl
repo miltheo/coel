@@ -1,0 +1,35 @@
+@prefix : <https://w3id.org/coel/models/activinsights/rest_activity/1.0#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/coel/models/activinsights/rest_activity/1.0> rdf:type owl:Ontology .
+<https://w3id.org/coel/models/activinsights/rest_activity/1.0> rdfs:label "Rest Activity Model v1.0" .
+
+# Annotation property to flag direct model outputs
+:isDirectOutputLabel a owl:AnnotationProperty .
+
+:rest_activity a owl:Class ;
+    rdfs:label "rest_activity" ;
+    rdfs:comment "Root of the classification tree used in ActivInsights 24hr rest activity patterning." ;
+    :isDirectOutputLabel "false"^^xsd:boolean .
+
+:non_wear a owl:Class ;
+    rdfs:label "non_wear" ;
+    rdfs:comment "Measurement device not worn." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :rest_activity .
+
+:wake a owl:Class ;
+    rdfs:label "wake" ;
+    rdfs:comment "Period of active physical behaviours." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :rest_activity .
+
+:rest a owl:Class ;
+    rdfs:label "rest" ;
+    rdfs:comment "Period of rest - a rest interval, part of a rest interval or other inactive physical behaviours." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :rest_activity .
+

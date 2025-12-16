@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Header": "dcterms:hasPart",
+    "When":   "dcterms:hasPart",
+    "What":   "dcterms:hasPart",
+    "Who":    "dcterms:hasPart",
+    "How":    "dcterms:hasPart",
+
+    "AtomIRI": { "@id": "dcterms:conformsTo", "@type": "@id" },
+    "AtomID":  { "@id": "dcterms:identifier" },
+
+    "TimeISO":    { "@id": "prov:startedAtTime", "@type": "xsd:dateTime" },
+    "EndTimeISO": { "@id": "prov:endedAtTime",   "@type": "xsd:dateTime" },
+    "Duration":   { "@id": "dcterms:extent",     "@type": "xsd:integer" },
+
+    "LabelIRI": { "@id": "sosa:observedProperty", "@container": "@list", "@type": "@id" },
+    "ClassificationModelIRI": { "@id": "sosa:usedProcedure", "@container": "@list", "@type": "@id" },
+
+    "ParticipantIRI": { "@id": "prov:wasAssociatedWith", "@type": "@id" },
+    "EvidenceIRI":    { "@id": "prov:used",              "@type": "@id" },
+
+    "EvidenceSystem": { "@id": "dcterms:description" }
+  }
+}
+
+
+
+
+
+
+

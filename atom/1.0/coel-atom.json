@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "COEL Behavioural Atom",
+  "type": "object",
+  "required": ["Header", "When", "What", "Who" ], 
+
+  "additionalProperties":false,
+  "properties":{
+    "Header"   : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{"Version":{"type":"array"}}},
+
+    "When"     : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "Time":{"type":"integer"},
+            "Duration":{"type":"integer"},
+            "UTCOffset":{"type":"integer"},
+            "Accuracy":{"type":"integer"}}},
+            
+    "What"     : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "Cluster": {"type": "integer"},
+            "Class": {"type": "integer"},
+            "SubClass": {"type": "integer"},
+            "Element": {"type": "integer"}}},
+            
+    "Who"      : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "ConsumerID":{"type":"string"},
+            "DeviceID":{"type":"string"}}},
+            
+    "How"      : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "How":{"type":"integer"},
+            "Certainty":{"type":"integer"},
+            "Reliability":{"type":"integer"}}},
+            
+    "Where"    : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "Exactness":{"type":"integer"},
+            "Latitude":{"type":"number"},
+            "Longitude":{"type":"number"},
+            "W3W":{"type":"string"},
+            "Place":{"type":"integer"},
+            "Postcode":{"type":"string"}}},
+            
+    "Context"  : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "Social":{"type":"integer"},
+            "Weather":{"type":"integer"},
+            "ContextTag":{"type":"integer"},
+            "ContextValue":{"type":"integer"}}},
+            
+    "Consent"  : {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "Jurisdiction":{"type":"string"},
+            "Date":{"type":"integer"},
+            "RetentionPeriod":{"type":"integer"},
+            "Purpose":{"type":"integer"},
+            "PolicyURL":{"type":"string"},
+            "RecordID":{"type":"string"},
+            "RecordService":{"type":"string"}}},
+            
+    "Extension": {
+        "type": "object",
+        "additionalProperties":false,
+        "properties":{
+            "ExtIntTag":{"type":"integer"},
+            "ExtIntValue":{"type":"integer"},
+            "ExtFltTag":{"type":"integer"},
+            "ExtFltValue":{"type":"number"},
+            "ExtStrTag":{"type":"integer"},
+            "ExtStrValue":{"type":"string"}}}}}

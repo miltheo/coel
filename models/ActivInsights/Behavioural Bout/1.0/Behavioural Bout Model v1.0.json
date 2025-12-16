@@ -1,0 +1,87 @@
+{
+  "modelName": "Behavioural Bout Model v1.0",
+  "modelId": "Behavioural Bout Model v1.0",
+  "version": "1.0",
+  "baseIRI": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0",
+  "labelKey": "label",
+  "parentKey": "parent_label",
+  "isOutputKey": "is_output",
+  "terms": [
+    {
+      "label": "behavioural_bout",
+      "description": "Root of the classification tree used in ActivInsights 24hr behavioural bout analysis.",
+      "is_output": false,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#behavioural_bout"
+    },
+    {
+      "label": "non_wear",
+      "parent_label": "behavioural_bout",
+      "description": "Measurement device not worn.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#non_wear"
+    },
+    {
+      "label": "sedentary",
+      "parent_label": "behavioural_bout",
+      "description": "Sitting or reclining posture (and MET below 1.5).",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sedentary"
+    },
+    {
+      "label": "active",
+      "parent_label": "behavioural_bout",
+      "description": "Active physical behaviour (light, moderate and vigorous MET).",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#active"
+    },
+    {
+      "label": "ambulatory",
+      "parent_label": "active",
+      "description": "Ambulatory physical behaviour.",
+      "is_output": false,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#ambulatory"
+    },
+    {
+      "label": "slow_walk",
+      "parent_label": "ambulatory",
+      "description": "Walking slower than median cadence (nominally 70 steps per minute).",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#slow_walk"
+    },
+    {
+      "label": "fast_walk",
+      "parent_label": "ambulatory",
+      "description": "Walking faster than median cadence (nominally 70 steps per minute).",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#fast_walk"
+    },
+    {
+      "label": "run",
+      "parent_label": "ambulatory",
+      "description": "Running.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#run"
+    },
+    {
+      "label": "sleep",
+      "parent_label": "sedentary",
+      "description": "Sleep.",
+      "is_output": true,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sleep"
+    },
+    {
+      "label": "low_move_sleep",
+      "parent_label": "sleep",
+      "description": "Sleep with prolonged low movement.",
+      "is_output": false,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#low_move_sleep"
+    },
+    {
+      "label": "high_move_sleep",
+      "parent_label": "sleep",
+      "description": "Sleep with higher movement.",
+      "is_output": false,
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#high_move_sleep"
+    }
+  ]
+}

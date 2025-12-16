@@ -1,0 +1,77 @@
+@prefix : <https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0> rdf:type owl:Ontology .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0> rdfs:label "Behavioural Bout Model v1.0" .
+
+# Annotation property to flag direct model outputs
+:isDirectOutputLabel a owl:AnnotationProperty .
+
+:behavioural_bout a owl:Class ;
+    rdfs:label "behavioural_bout" ;
+    rdfs:comment "Root of the classification tree used in ActivInsights 24hr behavioural bout analysis." ;
+    :isDirectOutputLabel "false"^^xsd:boolean .
+
+:non_wear a owl:Class ;
+    rdfs:label "non_wear" ;
+    rdfs:comment "Measurement device not worn." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :behavioural_bout .
+
+:sedentary a owl:Class ;
+    rdfs:label "sedentary" ;
+    rdfs:comment "Sitting or reclining posture (and MET below 1.5)." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :behavioural_bout .
+
+:active a owl:Class ;
+    rdfs:label "active" ;
+    rdfs:comment "Active physical behaviour (light, moderate and vigorous MET)." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :behavioural_bout .
+
+:ambulatory a owl:Class ;
+    rdfs:label "ambulatory" ;
+    rdfs:comment "Ambulatory physical behaviour." ;
+    :isDirectOutputLabel "false"^^xsd:boolean ;
+    rdfs:subClassOf :active .
+
+:slow_walk a owl:Class ;
+    rdfs:label "slow_walk" ;
+    rdfs:comment "Walking slower than median cadence (nominally 70 steps per minute)." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :ambulatory .
+
+:fast_walk a owl:Class ;
+    rdfs:label "fast_walk" ;
+    rdfs:comment "Walking faster than median cadence (nominally 70 steps per minute)." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :ambulatory .
+
+:run a owl:Class ;
+    rdfs:label "run" ;
+    rdfs:comment "Running." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :ambulatory .
+
+:sleep a owl:Class ;
+    rdfs:label "sleep" ;
+    rdfs:comment "Sleep." ;
+    :isDirectOutputLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :sedentary .
+
+:low_move_sleep a owl:Class ;
+    rdfs:label "low_move_sleep" ;
+    rdfs:comment "Sleep with prolonged low movement." ;
+    :isDirectOutputLabel "false"^^xsd:boolean ;
+    rdfs:subClassOf :sleep .
+
+:high_move_sleep a owl:Class ;
+    rdfs:label "high_move_sleep" ;
+    rdfs:comment "Sleep with higher movement." ;
+    :isDirectOutputLabel "false"^^xsd:boolean ;
+    rdfs:subClassOf :sleep .
+
