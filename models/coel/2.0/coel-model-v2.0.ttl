@@ -1,11 +1,11 @@
-@prefix coel: <http://w3id.org/coel/model/coel/2.0#> .
+@prefix coel: <http://w3id.org/coel/models/coel/2.0#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-<http://w3id.org/coel/model/coel/2.0> rdf:type owl:Ontology .
-<http://w3id.org/coel/model/coel/2.0> rdfs:label "COEL Model v2.0" .
+<http://w3id.org/coel/models/coel/2.0> rdf:type owl:Ontology .
+<http://w3id.org/coel/models/coel/2.0> rdfs:label "COEL Model v2.0" .
 
 # Annotation property for the COEL code
 coel:coelCode a owl:AnnotationProperty .
