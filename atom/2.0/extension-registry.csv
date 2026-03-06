@@ -21,4 +21,4 @@ StepMean,The mean stepping rate (cadence) of an epoch/event.,number,steps per mi
 StepSD,The standard deviation of stepping rate (cadence) of an epoch/event.,number,steps per minute,,,,no,active,ActivInsights,2025-11,,12,
 StepsDiff,The mean of the absolute difference between successive step intervals.,number,s,,,,no,active,ActivInsights,2025-11,,3,
 MET,The steady-state metaboic equivalent associated with the epoch/event.,number,METs,,,,no,active,ActivInsights,2025-11,,3.25,
-,,,,,,,,,,,,,
+PostureChanges,,number,count,,,,no,active,ActivInsights,2025-11,,2,

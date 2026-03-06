@@ -1,6 +1,6 @@
 {
   "modelName": "Behavioural Bout Model v1.0",
-  "modelId": "Behavioural Bout Model v1.0",
+  "modelId": "behavioural-bout-model-v1.0",
   "version": "1.0",
   "baseIRI": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0",
   "labelKey": "label",
@@ -8,80 +8,66 @@
   "isOutputKey": "is_output",
   "terms": [
     {
-      "label": "behavioural_bout",
+      "label": "BehaviouralBout",
       "description": "Root of the classification tree used in ActivInsights 24hr behavioural bout analysis.",
       "is_output": false,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#behavioural_bout"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#BehaviouralBout"
     },
     {
-      "label": "non_wear",
-      "parent_label": "behavioural_bout",
+      "label": "NonWear",
+      "parent_label": "BehaviouralBout",
       "description": "Measurement device not worn.",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#non_wear"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#NonWear"
     },
     {
-      "label": "sedentary",
-      "parent_label": "behavioural_bout",
+      "label": "Sedentary",
+      "parent_label": "BehaviouralBout",
       "description": "Sitting or reclining posture (and MET below 1.5).",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sedentary"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sedentary"
     },
     {
-      "label": "active",
-      "parent_label": "behavioural_bout",
+      "label": "Active",
+      "parent_label": "BehaviouralBout",
       "description": "Active physical behaviour (light, moderate and vigorous MET).",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#active"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Active"
     },
     {
-      "label": "ambulatory",
-      "parent_label": "active",
+      "label": "Ambulatory",
+      "parent_label": "Active",
       "description": "Ambulatory physical behaviour.",
       "is_output": false,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#ambulatory"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Ambulatory"
     },
     {
-      "label": "slow_walk",
-      "parent_label": "ambulatory",
+      "label": "SlowWalk",
+      "parent_label": "Ambulatory",
       "description": "Walking slower than median cadence (nominally 70 steps per minute).",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#slow_walk"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#SlowWalk"
     },
     {
-      "label": "fast_walk",
-      "parent_label": "ambulatory",
+      "label": "FastWalk",
+      "parent_label": "Ambulatory",
       "description": "Walking faster than median cadence (nominally 70 steps per minute).",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#fast_walk"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#FastWalk"
     },
     {
-      "label": "run",
-      "parent_label": "ambulatory",
+      "label": "Run",
+      "parent_label": "Ambulatory",
       "description": "Running.",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#run"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Run"
     },
     {
-      "label": "sleep",
-      "parent_label": "sedentary",
+      "label": "Sleep",
+      "parent_label": "Sedentary",
       "description": "Sleep.",
       "is_output": true,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sleep"
-    },
-    {
-      "label": "low_move_sleep",
-      "parent_label": "sleep",
-      "description": "Sleep with prolonged low movement.",
-      "is_output": false,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#low_move_sleep"
-    },
-    {
-      "label": "high_move_sleep",
-      "parent_label": "sleep",
-      "description": "Sleep with higher movement.",
-      "is_output": false,
-      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#high_move_sleep"
+      "iri": "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sleep"
     }
   ]
 }

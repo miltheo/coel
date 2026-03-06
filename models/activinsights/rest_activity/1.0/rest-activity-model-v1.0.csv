@@ -1,5 +1,5 @@
 label,parent_label,description,is_output,iri
-rest_activity,NA,Root of the classification tree used in ActivInsights 24hr rest activity patterning.,FALSE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest_activity
-non_wear,rest_activity,Measurement device not worn.,TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#non_wear
-wake,rest_activity,Period of active physical behaviours.,TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake
-rest,rest_activity,"Period of rest - a rest interval, part of a rest interval or other inactive physical behaviours.",TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest
+RestActivity,NA,Root of the classification tree used in ActivInsights 24hr rest activity patterning.,FALSE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#RestActivity
+NonWear,RestActivity,Measurement device not worn.,TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#NonWear
+Wake,RestActivity,Period of active physical behaviours.,TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake
+Rest,RestActivity,"Period of rest - a rest interval, part of a rest interval or other inactive physical behaviours.",TRUE,https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest

@@ -1,0 +1,15 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/mapping-to-coel> a owl:Ontology ;
+  rdfs:label "Behavioural Bout Model v1.0 to COEL Model v2.0 mapping" .
+
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sedentary> skos:closeMatch <https://w3id.org/coel/models/coel/2.0#14.9.3.1> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Active> skos:closeMatch <https://w3id.org/coel/models/coel/2.0#14.9.3.2> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Ambulatory> skos:broadMatch <https://w3id.org/coel/models/coel/2.0#14.9.3.2> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#SlowWalk> skos:broadMatch <https://w3id.org/coel/models/coel/2.0#14.5> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#FastWalk> skos:broadMatch <https://w3id.org/coel/models/coel/2.0#14.5> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Run> skos:closeMatch <https://w3id.org/coel/models/coel/2.0#14.4> .
+<https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sleep> skos:closeMatch <https://w3id.org/coel/models/coel/2.0#13.1> .

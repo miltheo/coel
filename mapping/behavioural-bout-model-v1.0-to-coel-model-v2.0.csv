@@ -1,12 +1,10 @@
 label,coel_code,coel_label,mapping_type,comment
-behaviour,,,,"Root class, not mapped to COEL."
-wear state,,,,"Internal node, not an output; no COEL mapping."
-non-wear,,,,GENEAbout non-wear related to COEL 24.2.6.3.
-wear,24.2,Use,skos:broader,"Internal node, not an output; no COEL mapping."
-rest,13.1,Asleep,skos:broader,COEL 13.1 is behaviourally broader than GENEAbout rest.
-sedentary,14.9.3.1,Sedentary,skos:related,GENEAbout sedentary related to COEL 14.9.3.1.
-active,14.9.3.2,Active,skos:related,GENEAbout active related to COEL 14.9.3.2.
-ambulatory,14.9.3.2,Active,skos:broader,COEL 14.9.3.2 is broader than GENEAbout ambulatory flag.
-slow_walk,14.5,Walking,skos:broader,COEL 14.5 is a broader walking category than GENEAbout slow_walk.
-fast_walk,14.5,Walking,skos:broader,COEL 14.5 is a broader walking category than GENEAbout fast_walk.
-run,14.4,Running,skos:related,GENEAbout run related to COEL 14.4.
+BehaviouralBout,,,,"Root class, not mapped to COEL."
+NonWear,,,,
+Sedentary,14.9.3.1,Sedentary,skos:closeMatch,GENEAbout Sedentary close match to COEL 14.9.3.1.
+Active,14.9.3.2,Active,skos:closeMatch,GENEAbout Active close match to COEL 14.9.3.2.
+Ambulatory,14.9.3.2,Active,skos:broadMatch,COEL 14.9.3.2 is broader than GENEAbout Ambulatory
+SlowWalk,14.5,Walking,skos:broadMatch,COEL 14.5 is a broader walking category than GENEAbout SlowWalk
+FastWalk,14.5,Walking,skos:broadMatch,COEL 14.5 is a broader walking category than GENEAbout FastWalk
+Run,14.4,Running,skos:closeMatch,GENEAbout Run close match to COEL 14.4.
+Sleep,13.1,Asleep,skos:closeMatch,COEL 13.1 is behaviourally related to GENEAbout Sleep

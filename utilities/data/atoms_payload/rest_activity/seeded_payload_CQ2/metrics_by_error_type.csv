@@ -1,0 +1,7 @@
+"label","TP","FP","FN","TN","Accuracy","Precision","Sensitivity","Specificity","F1"
+"Field removed",0,0,26,204,0.88695652173913,NA,0,1,NA
+"Type change",0,0,0,230,1,NA,NA,1,NA
+"String corrupt",0,0,0,230,1,NA,NA,1,NA
+"PII inject",0,0,0,230,1,NA,NA,1,NA
+"Atom duplicated",0,0,0,230,1,NA,NA,1,NA
+"Temporal gap",0,0,0,230,1,NA,NA,1,NA

@@ -1,0 +1,1162 @@
+[
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749472579#27824#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749472579,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-09T13:36:19+01:00",
+      "Duration": 27824
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749500403#29185#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749500403,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-09T21:20:03+01:00",
+      "Duration": 29185
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749529588#60701#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749529588,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-10T05:26:28+01:00",
+      "Duration": 60701
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749590289#26653#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749590289,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-10T22:18:09+01:00",
+      "Duration": 26653
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749616942#59452#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749616942,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-11T05:42:22+01:00",
+      "Duration": 59452
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749676394#25750#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749676394,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-11T22:13:14+01:00",
+      "Duration": 25750
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749702144#58218#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749702144,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-12T05:22:24+01:00",
+      "Duration": 58218
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749760362#28732#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749760362,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-12T21:32:42+01:00",
+      "Duration": 28732
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749789094#55894#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749789094,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-13T05:31:34+01:00",
+      "Duration": 55894
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749844988#33913#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749844988,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-13T21:03:08+01:00",
+      "Duration": 33913
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749878901#52828#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749878901,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-14T06:28:21+01:00",
+      "Duration": 52828
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749931729#32030#Rest"
+    },
+    "When": {
+      "TimeUTC": 1749931729,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-14T21:08:49+01:00",
+      "Duration": 32030
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1749963759#56984#Wake"
+    },
+    "When": {
+      "TimeUTC": 1749963759,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-15T06:02:39+01:00",
+      "Duration": 56984
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750020743#26751#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750020743,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-15T21:52:23+01:00",
+      "Duration": 26751
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750047494#58677#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750047494,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-16T05:18:14+01:00",
+      "Duration": 58677
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750106171#28456#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750106171,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-16T21:36:11+01:00",
+      "Duration": 28456
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750134627#60332#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750134627,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-17T05:30:27+01:00",
+      "Duration": 60332
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750194959#26511#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750194959,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-17T22:15:59+01:00",
+      "Duration": 26511
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750221470#60199#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750221470,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-18T05:37:50+01:00",
+      "Duration": 60199
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750281669#25794#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750281669,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-18T22:21:09+01:00",
+      "Duration": 25794
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750307463#62328#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750307463,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-19T05:31:03+01:00",
+      "Duration": 62328
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750369791#23544#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750369791,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-19T22:49:51+01:00",
+      "Duration": 23544
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750393335#61661#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750393335,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-20T05:22:15+01:00",
+      "Duration": 61661
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750454996#26708#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750454996,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-20T22:29:56+01:00",
+      "Duration": 26708
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750481704#58322#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750481704,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-21T05:55:04+01:00",
+      "Duration": 58322
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750540026#28910#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750540026,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-21T22:07:06+01:00",
+      "Duration": 28910
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750568936#55525#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750568936,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-22T06:08:56+01:00",
+      "Duration": 55525
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750624461#28196#Rest"
+    },
+    "When": {
+      "TimeUTC": 1750624461,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-22T21:34:21+01:00",
+      "Duration": 28196
+    },
+    "What": {
+      "Label": [
+        "Rest",
+        "13.1"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+        "https://w3id.org/coel/models/coel/2.0#13.1"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  },
+  {
+    "Header": {
+      "AtomVersion": "2.0",
+      "AtomIRI": "https://w3id.org/coel/atom/2.0",
+      "AtomID": "111706_1749476168_1_4032059#1750652657#29522#Wake"
+    },
+    "When": {
+      "TimeUTC": 1750652657,
+      "UTCOffset": 3600,
+      "TimeISO": "2025-06-23T05:24:17+01:00",
+      "Duration": 29522
+    },
+    "What": {
+      "Label": [
+        "Wake",
+        "14.9.3.2"
+      ],
+      "LabelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Wake",
+        "https://w3id.org/coel/models/coel/2.0#14.9.3.2"
+      ]
+    },
+    "Who": {
+      "ParticipantID": "HD=?jRf2)bnv5PTQ#)P6"
+    },
+    "How": {
+      "EvidenceType": 7,
+      "EvidenceSystem": "GENEAcore Version: 1.1.3; Device: GENEActiv 1.2; DeviceID: 111706; FirmwareVersion: Ver06.17 15June23; Protocol: right wrist, 100 Hz",
+      "ClassificationModel": [
+        "Rest Activity Model v1.0",
+        "COEL Model v2.0"
+      ],
+      "ClassificationModelIRI": [
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0/",
+        "https://w3id.org/coel/models/coel/2.0/"
+      ],
+      "AssessmentTimeISO": "2026-02-23T01:00:00+01:00",
+      "EvidenceID": "111706_1749476168_1_4032059"
+    }
+  }
+]

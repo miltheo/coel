@@ -10,6 +10,13 @@ If you use COEL in academic or commercial work, please cite the official COEL v1
 
 ## Repository structure
 
+If you use COEL in academic or commercial work, please cite the official COEL v1.0 standard and associated study (future publication).
+
+## Repository structure
+
+- `app/`  
+  Versioned Shiny App resources, including source code.
+  
 - `atom/`  
   Versioned Atom resources, including JSON Schema and JSON-LD context files.
 
@@ -19,9 +26,8 @@ If you use COEL in academic or commercial work, please cite the official COEL v1
 - `mapping/`  
   Crosswalk mappings between external models and COEL model versions.
 
-## Status and scope
-
-This repository is under active development and is intended to support internal review and iterative refinement. File names and folder paths are being standardised to support resolvable identifiers and long term maintenance.
+- `utilities/`  
+  Example data and R code used in the associated study and Shiny App.
 
 ## Licence
 
@@ -30,10 +36,7 @@ See `LICENSE`.
 ## Maintainers
 
 - Millen J. Theophilus (GitHub: `miltheo`)
-- Joss Langford (Activinsights) (GitHub: `<add-handle>`)
-- JIa Ying (Activinsights) (GitHub: `<add-handle>`)
-
-Maintainer list and organisational crediting will be finalised after internal review.
+- JIa Ying (Activinsights) (GitHub: `<ai-jyc`)
 
 ## Acknowledgements
 

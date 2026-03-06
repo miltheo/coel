@@ -1,12 +1,10 @@
 label,parent_label,description,is_output,iri
-behavioural_bout,NA,Root of the classification tree used in ActivInsights 24hr behavioural bout analysis.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#behavioural_bout
-non_wear,behavioural_bout,Measurement device not worn.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#non_wear
-sedentary,behavioural_bout,Sitting or reclining posture (and MET below 1.5).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sedentary
-active,behavioural_bout,"Active physical behaviour (light, moderate and vigorous MET).",TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#active
-ambulatory,active,Ambulatory physical behaviour.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#ambulatory
-slow_walk,ambulatory,Walking slower than median cadence (nominally 70 steps per minute).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#slow_walk
-fast_walk,ambulatory,Walking faster than median cadence (nominally 70 steps per minute).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#fast_walk
-run,ambulatory,Running.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#run
-sleep,sedentary,Sleep.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#sleep
-low_move_sleep,sleep,Sleep with prolonged low movement.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#low_move_sleep
-high_move_sleep,sleep,Sleep with higher movement.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#high_move_sleep
+BehaviouralBout,NA,Root of the classification tree used in ActivInsights 24hr behavioural bout analysis.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#BehaviouralBout
+NonWear,BehaviouralBout,Measurement device not worn.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#NonWear
+Sedentary,BehaviouralBout,Sitting or reclining posture (and MET below 1.5).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sedentary
+Active,BehaviouralBout,"Active physical behaviour (light, moderate and vigorous MET).",TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Active
+Ambulatory,Active,Ambulatory physical behaviour.,FALSE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Ambulatory
+SlowWalk,Ambulatory,Walking slower than median cadence (nominally 70 steps per minute).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#SlowWalk
+FastWalk,Ambulatory,Walking faster than median cadence (nominally 70 steps per minute).,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#FastWalk
+Run,Ambulatory,Running.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Run
+Sleep,Sedentary,Sleep.,TRUE,https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sleep
