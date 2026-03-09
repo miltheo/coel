@@ -1,14 +1,36 @@
-﻿# COEL Model Folder
+# COEL Model Resources
 
-This folder contains versioned registries and metadata for all classification models used within the COEL ecosystem.
+Canonical IRI: `https://w3id.org/coel/models/`
 
-Each subfolder within `model/` corresponds to a specific model and version, and includes a registry of classification terms, their definitions, and related metadata. 
+This folder contains versioned classification model resources used within the COEL ecosystem.
 
-## 📚 Purpose
+Each subfolder within `models/` corresponds to a specific model family and version, and contains the registry resources required for lookup, validation, mapping, and reference.
 
-This directory enables standardised lookup, mapping, and referencing of behaviour classification models. It supports the use of COEL Atom schemas and mapping files by defining consistent identifiers and machine-readable references for all terms.
+## Purpose
 
-## 🧩 Related Components
+This directory supports standardised representation and use of behaviour classification models within the COEL ecosystem. It provides stable, versioned resources for model terms and helps enable consistent identifier use across Atom payloads, mapping files, and related implementation resources.
 
-- [`mapping/`](../mapping/) — model-to-model mapping files using SKOS-aligned terms  
-- [`atom/`](../atom/) — schemas and extension registries for data exchange formats  
+## Structure
+
+This folder includes model resources for:
+
+- `coel/`  
+  COEL classification model resources.
+
+- `activinsights/`  
+  ActivInsights implementation-specific classification model resources.
+
+- `registry.csv`  
+  Top-level registry of available model resources within the repository.
+
+## Notes
+
+- Each model is organised using versioned subfolders.
+- Model-specific details are documented within the corresponding subdirectory README files.
+- These resources support lookup, interoperability checking, and cross-model mapping within the COEL v2.0 ecosystem.
+
+## Related resources
+
+- Repository root: `https://w3id.org/coel/`
+- Mapping resources: `https://w3id.org/coel/mapping/`
+- COEL Behavioural Atom v2.0: `https://w3id.org/coel/atom/2.0/`

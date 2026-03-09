@@ -1,33 +1,45 @@
 # COEL
 
-This repository hosts working artefacts for an extended COEL (Classification of Everyday Living) ecosystem, including versioned Atom schema resources, behaviour classification models, and crosswalk mappings. The goal is to support interoperable representation of behavioural event data across research and commercial workflows, with clear versioning and machine readable artefacts.
+This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification models, Atom schema resources, mapping files, semantic projection resources, and a Shiny web application.
 
-## Relationship to the COEL v1.0 standard
+This repository is being prepared as a published companion resource to a **future COEL v2.0 manuscript**. It should therefore be treated as a versioned research and implementation resource.
 
-COEL (Classification of Everyday Living) v1.0 is an OASIS standard. This repository builds on the concepts and structure introduced in that standard and contains additional, project specific artefacts and draft extensions. Nothing in this repository should be interpreted as an official OASIS publication unless explicitly stated and versioned as such.
+## Relationship to COEL v1.0
 
-If you use COEL in academic or commercial work, please cite the official COEL v1.0 standard and associated OASIS materials.
+**COEL v1.0** is an official OASIS standard. This repository builds on concepts introduced in that standard but contains additional project-specific artefacts, implementation resources, and draft extensions developed for the COEL v2.0 ecosystem.
 
-## Repository structure
+Nothing in this repository should be interpreted as an official OASIS publication unless explicitly stated.
 
-If you use COEL in academic or commercial work, please cite the official COEL v1.0 standard and associated study (future publication).
+## Main entry points
+
+- **Root namespace:** `https://w3id.org/coel/`
+- **Shiny app:** `https://w3id.org/coel/app/`
+- **COEL Behavioural Atom v2.0:** `https://w3id.org/coel/atom/2.0/`
+- **COEL Model v2.0:** `https://w3id.org/coel/models/coel/2.0/`
+- **Mappings:** `https://w3id.org/coel/mapping/`
+
+Additional persistent identifiers resolve through the repository folder structure and are documented within the corresponding subdirectory README files.
 
 ## Repository structure
 
 - `app/`  
-  Versioned Shiny App resources, including source code.
-  
+  Shiny application resources and source code.
+
 - `atom/`  
-  Versioned Atom resources, including JSON Schema and JSON-LD context files.
+  Versioned Atom schema resources.
 
 - `models/`  
-  Versioned behaviour classification models in CSV, JSON, and TTL, plus a `registry.csv` describing available models.
+  Versioned behaviour classification model resources.
 
 - `mapping/`  
-  Crosswalk mappings between external models and COEL model versions.
+  Mapping files linking external models to COEL model concepts.
 
 - `utilities/`  
-  Example data and R code used in the associated study and Shiny App.
+  Supporting code, example data, and JSON-LD file used in the accompanying study.
+
+## Citation
+
+If you use these resources, please cite the relevant versioned repository release and the associated **future COEL v2.0 publication** once available. Where appropriate, also cite the official OASIS COEL v1.0 standard.
 
 ## Licence
 
@@ -35,11 +47,9 @@ See `LICENSE`.
 
 ## Maintainers
 
-- Millen J. Theophilus (GitHub: `miltheo`)
-- JIa Ying (Activinsights) (GitHub: `<ai-jyc`)
+- **Millen J. Theophilus** (`miltheo`)
+- **Jia Ying Chua** (`ai-jyc`)
 
 ## Acknowledgements
 
-This work is informed by the OASIS COEL v1.0 standard and related community contributions. COEL is a trademark and standard maintained by OASIS and its contributors. This repository is not affiliated with or endorsed by OASIS unless explicitly stated.
-
-
+This work builds on the COEL v1.0 standard and related community contributions. This repository is an implementation and research ecosystem resource and is not an official OASIS publication unless explicitly stated.

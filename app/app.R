@@ -1,5 +1,5 @@
 # app.R
-# COEL Digital System utilities (minimal Shiny)
+# COEL Web Application
 # Features:
 # 1) Upload Atom payload (.json or .json.gz)
 # 2) Structural validation (TEST1, TEST2, TEST3 only)
@@ -732,7 +732,7 @@ ui <- fluidPage(
                 padding: 18px;
                 box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
             }
-            .form-group { margin-bottom: 12px; }
+            .form-group { margin-bottom: 10px; }
             .btn { border-radius: 10px; }
             .btn-default, .btn-primary {
                 padding: 8px 12px;
@@ -740,19 +740,63 @@ ui <- fluidPage(
             .shiny-download-link {
                 display: inline-block;
                 margin-right: 8px;
-                margin-top: 8px;
-                margin-bottom: 2px;
+                margin-top: 6px;
+                margin-bottom: 0px;
             }
             .dataTables_wrapper { margin-top: 6px; margin-bottom: 18px; }
             h4 { margin-top: 6px; margin-bottom: 10px; }
             hr { margin-top: 14px; margin-bottom: 14px; }
+            
+            .coel-app-subtitle {
+                color: #5f6b7a; margin-top: -2px; margin-bottom: 8px;
+            }
+            .coel-app-meta {
+                color: #4b5563;
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+            .coel-app-links {
+                font-size: 13px;
+                margin-bottom: 14px;
+            }
+            .coel-app-links a, .coel-app-meta a {
+                text-decoration: none;
+            }
+            .coel-panel-block .form-group:last-child {
+                margin-bottom: 4px;
+            }
+            .coel-tight-note {
+                font-size: 12px;
+                color: #5f6b7a;
+                line-height: 1.45;
+                margin-top: -4px;
+                margin-bottom: 8px;
+            }
+            .coel-tight-gap {
+                margin-top: 6px;
+            }
         "))
     ),
     
     div(class = "coel-app-title",
-        titlePanel("COEL Digital System Utilities"),
-        div(class = "coel-app-subtitle",
+        tags$h2("COEL Web Application"),
+        div(
+            class = "coel-app-subtitle",
             "Validation, integrity review, temporal scoping, summary inspection, and JSON-LD projection for COEL Behavioural Atoms."
+        ),
+        div(
+            class = "coel-app-meta",
+            HTML('Author and Maintainer: Millen J. Theophilus (<a href="https://github.com/miltheo" target="_blank">github: miltheo</a>)')
+        ),
+        div(
+            class = "coel-app-links",
+            HTML(paste0(
+                '<a href="https://github.com/miltheo/coel" target="_blank">GitHub repository</a>',
+                ' &nbsp;|&nbsp; ',
+                '<a href="https://w3id.org/coel/atom/2.0/specification.pdf" target="_blank">COEL Behavioural Atom v2.0 specification</a>',
+                ' &nbsp;|&nbsp; ',
+                '<a href="#" target="_blank">Zenodo release DOI (placeholder)</a>'
+            ))
         )
     ),
     
@@ -799,15 +843,13 @@ ui <- fluidPage(
                 "Temporal scoping",
                 uiOutput("pid_ui"),
                 uiOutput("w_start_ui"),
-                tags$small("Enter UTC time as YYYY-MM-DD HH:MM:SS. Default is the participant start time."),
+                div(class = "coel-tight-note", "Enter UTC time as YYYY-MM-DD HH:MM:SS. Default is the participant start time."),
                 fluidRow(
                     column(6, numericInput("w_dur_val", "Window duration", value = 24, min = 0, step = 1)),
                     column(6, selectInput("w_dur_unit", "Unit", choices = c("Hours"="hours","Days"="days"), selected = "hours"))
                 ),
-                tags$small("Tip: set duration to 0 to scope the full participant span."),
-                tags$br(),
-                actionButton("run_cq6", "Run temporal scoping"),
-                tags$br(),
+                div(class = "coel-tight-note", "Tip: set duration to 0 to scope the full participant span."),
+                div(class = "coel-tight-gap", actionButton("run_cq6", "Run temporal scoping")),
                 downloadButton("dl_ts_atoms", "Download retrieved Atoms (JSON)"),
                 downloadButton("dl_ts_table", "Download table (CSV)"),
                 downloadButton("dl_ts_plot",  "Download plot (PNG)")
@@ -816,10 +858,11 @@ ui <- fluidPage(
             panel_block(
                 "Per-day summary scoping",
                 numericInput("day_cut", "Day cut hour (local)", value = 3, min = 0, max = 23, step = 1),
-                tags$small("Defines the local day boundary used to assign Atoms to dates. For example, 3 means each day runs from 03:00 to 02:59 local time using TimeUTC + UTCOffset."),
-                tags$br(),
-                actionButton("run_cq7", "Run per-day summary scoping"),
-                tags$br(),
+                div(
+                    class = "coel-tight-note",
+                    "Defines the local day boundary used to assign Atoms to dates. For example, 3 means each day runs from 03:00 to 02:59 local time using TimeUTC + UTCOffset."
+                ),
+                div(class = "coel-tight-gap", actionButton("run_cq7", "Run per-day summary scoping")),
                 downloadButton("dl_pd_table", "Download table (CSV)"),
                 downloadButton("dl_pd_plot",  "Download plot (PNG)")
             ),
@@ -827,8 +870,7 @@ ui <- fluidPage(
             panel_block(
                 "JSON-LD projection",
                 fileInput("context", "Optional context.jsonld", accept = c(".json",".jsonld")),
-                actionButton("make_jsonld", "Create JSON-LD"),
-                tags$br(),
+                div(class = "coel-tight-gap", actionButton("make_jsonld", "Create JSON-LD")),
                 downloadButton("dl_jsonld", "Download JSON-LD")
             ),
             
@@ -1367,9 +1409,8 @@ server <- function(input, output, session) {
                 ctx_doc <- read_json_any(input$context$datapath)
                 ctx <- ctx_doc[["@context"]] %||% ctx_doc
             } else {
-                default_ctx_path <- file.path(getwd(), "context.jsonld")
-                if (!file.exists(default_ctx_path)) stop("No context provided and default context.jsonld not found in working directory.")
-                ctx_doc <- read_json_any(default_ctx_path)
+                default_ctx_path <- "https://raw.githubusercontent.com/miltheo/coel/main/utilities/jsonld/context.jsonld"
+                ctx_doc <- read_json_any(to_src(default_ctx_path))
                 ctx <- ctx_doc[["@context"]] %||% ctx_doc
             }
             incProgress(0.7, detail = "Projecting payload")
