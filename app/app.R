@@ -1,5 +1,6 @@
 # app.R
 # COEL Web Application
+# Author and maintainer: Millen J Theophilus
 # Features:
 # 1) Upload Atom payload (.json or .json.gz)
 # 2) Structural validation (TEST1, TEST2, TEST3 only)
@@ -20,7 +21,9 @@ library(DT)
 # ----------------------------
 # Utils
 # ----------------------------
-options(shiny.maxRequestSize = 100 * 1024^2)
+# options(shiny.maxRequestSize = 100 * 1024^2)
+options(shiny.maxRequestSize = 25 * 1024^2)
+
 
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
@@ -790,21 +793,31 @@ ui <- fluidPage(
         ),
         div(
             class = "coel-app-links",
-            HTML(paste0(
-                '<a href="https://github.com/miltheo/coel" target="_blank">GitHub repository</a>',
-                ' &nbsp;|&nbsp; ',
-                '<a href="https://w3id.org/coel/atom/2.0/specification.pdf" target="_blank">COEL Behavioural Atom v2.0 specification</a>',
-                ' &nbsp;|&nbsp; ',
-                '<a href="#" target="_blank">Zenodo release DOI (placeholder)</a>'
-            ))
+            HTML(
+                'COEL v2.0 demonstration application &nbsp;|&nbsp; Local default JSON-LD context included in deployment'
+            )
         )
+        # div(
+        #     class = "coel-app-links",
+        #     HTML(paste0(
+        #         '<a href="https://github.com/miltheo/coel" target="_blank">GitHub repository</a>',
+        #         ' &nbsp;|&nbsp; ',
+        #         '<a href="https://w3id.org/coel/atom/2.0/specification.pdf" target="_blank">COEL Behavioural Atom v2.0 specification</a>',
+        #         ' &nbsp;|&nbsp; ',
+        #         '<a href="#" target="_blank">Zenodo release DOI (placeholder)</a>'
+        #     ))
+        # )
     ),
     
     sidebarLayout(
         sidebarPanel(
             panel_block(
                 "Payload",
-                fileInput("payload", "Upload Atom payload (.json or .json.gz)", accept = c(".json",".gz"))
+                fileInput("payload", "Upload Atom payload (.json or .json.gz)", accept = c(".json",".gz")),
+                div(
+                    class = "coel-tight-note",
+                    "Maximum upload size is 25 MB. Use .json.gz where possible, especially for larger payloads."
+                )
             ),
             
             panel_block(
@@ -870,7 +883,15 @@ ui <- fluidPage(
             panel_block(
                 "JSON-LD projection",
                 fileInput("context", "Optional context.jsonld", accept = c(".json",".jsonld")),
-                div(class = "coel-tight-gap", actionButton("make_jsonld", "Create JSON-LD")),
+                div(
+                    class = "coel-tight-note",
+                    "Creates a JSON-LD projection of the uploaded Atom payload by preserving the Atom JSON structure, assigning an @id to each Atom, and wrapping the payload in an @context and @graph. Semantic interpretation is determined by the selected context file."
+                ),
+                div(
+                    class = "coel-tight-note",
+                    "If no context file is uploaded, the application uses the bundled study context.jsonld included in this deployment."
+                ),
+                div(class = "coel-tight-gap", actionButton("make_jsonld", "Create JSON-LD projection")),
                 downloadButton("dl_jsonld", "Download JSON-LD")
             ),
             
@@ -914,35 +935,68 @@ server <- function(input, output, session) {
     violations_r <- reactiveVal(data.frame())
     cq6_r <- reactiveVal(NULL)
     cq7_r <- reactiveVal(NULL)
-    jsonld_r <- reactiveVal(NULL)
     label_vio_r <- reactiveVal(data.frame())
     dup_r       <- reactiveVal(data.frame())
     gap_r       <- reactiveVal(data.frame())
     ovl_r       <- reactiveVal(data.frame())
     models_r <- reactiveVal(character(0))
     
+    val_ran_r   <- reactiveVal(FALSE)
+    label_ran_r <- reactiveVal(FALSE)
+    dup_ran_r   <- reactiveVal(FALSE)
+    temp_ran_r  <- reactiveVal(FALSE)
+    cq6_ran_r   <- reactiveVal(FALSE)
+    cq7_ran_r   <- reactiveVal(FALSE)
+    
+    jsonld_r <- reactiveVal(NULL)
+    
     observeEvent(input$payload, {
         req(input$payload$datapath)
+        if (!is.null(input$payload$size) && input$payload$size > 25 * 1024^2) {
+            showNotification("Uploaded file exceeds the 25 MB hosted limit.", type = "error")
+            return(NULL)
+        }
         withProgress(message = "Loading payload", value = 0, {
-            incProgress(0.2, detail = "Reading file")
-            atoms <- read_json_any(input$payload$datapath)
-            incProgress(0.6, detail = "Parsing JSON")
-            if (!is.list(atoms)) stop("Payload must be a JSON array (list of Atoms).")
-            atoms_r(atoms)
-            md_all <- unique(unlist(lapply(atoms, get_models_vec), use.names = FALSE))
-            md_all <- md_all[nzchar(md_all)]
-            models_r(sort(md_all))
-            incProgress(0.9, detail = "Computing overview")
-            summary_r(payload_summary(atoms))
+            
+            atoms_r(NULL)
+            summary_r(NULL)
             violations_r(data.frame())
             cq6_r(NULL)
             cq7_r(NULL)
-            jsonld_r(NULL)
             label_vio_r(data.frame())
             dup_r(data.frame())
             gap_r(data.frame())
             ovl_r(data.frame())
+            models_r(character(0))
+            
+            val_ran_r(FALSE)
+            label_ran_r(FALSE)
+            dup_ran_r(FALSE)
+            temp_ran_r(FALSE)
+            cq6_ran_r(FALSE)
+            cq7_ran_r(FALSE)
+            
+            jsonld_r(NULL)
+            
+            gc()
+            
+            incProgress(0.2, detail = "Reading file")
+            atoms <- read_json_any(input$payload$datapath)
+            
+            incProgress(0.6, detail = "Parsing JSON")
+            if (!is.list(atoms)) stop("Payload must be a JSON array (list of Atoms).")
+            
+            atoms_r(atoms)
+            
+            md_all <- unique(unlist(lapply(atoms, get_models_vec), use.names = FALSE))
+            md_all <- md_all[nzchar(md_all)]
+            models_r(sort(md_all))
+            
+            incProgress(0.9, detail = "Computing overview")
+            summary_r(payload_summary(atoms))
+            
             incProgress(1, detail = "Done")
+            gc()
         })
     })
     
@@ -1042,6 +1096,7 @@ server <- function(input, output, session) {
     observeEvent(input$run_val, {
         atoms <- atoms_r()
         req(atoms)
+        val_ran_r(TRUE)
         withProgress(message = "Validating structure", value = 0, {
             incProgress(0.2, detail = "Running TEST1-TEST3")
             val <- validator_structural(atoms, run_TEST1 = TRUE, run_TEST2 = TRUE, run_TEST3 = TRUE)
@@ -1060,7 +1115,7 @@ server <- function(input, output, session) {
             ))
         }
         
-        if (isTRUE(input$run_val < 1)) {
+        if (!isTRUE(val_ran_r())) {
             return(placeholder_box(
                 title = "Structural validation not yet run",
                 text = "Run the structural validator to display structural findings for the uploaded payload.",
@@ -1092,6 +1147,7 @@ server <- function(input, output, session) {
          atoms <- atoms_r()
          mods <- models_r()
          req(atoms, length(mods) > 0)
+         label_ran_r(TRUE)
          
          reg_vals <- vapply(mods, function(m) input[[paste0("reg__", m)]] %||% "", character(1))
          reg_vals <- reg_vals[nzchar(reg_vals)]
@@ -1108,20 +1164,23 @@ server <- function(input, output, session) {
      })
 
     observeEvent(input$run_dup, {
-         atoms <- atoms_r()
-         req(atoms)
-         withProgress(message = "Finding duplicates", value = 0, {
-             incProgress(0.3, detail = "Computing signatures")
-             res <- validator_duplicates_full(atoms)
-             incProgress(0.9, detail = "Preparing results")
-             dup_r(res$duplicates)
-             incProgress(1, detail = "Done")
-         })
-     })
+        atoms <- atoms_r()
+        req(atoms)
+        dup_ran_r(TRUE)
+        withProgress(message = "Finding duplicates", value = 0, {
+            incProgress(0.3, detail = "Computing signatures")
+            res <- validator_duplicates_full(atoms)
+            incProgress(0.9, detail = "Preparing results")
+            dup_r(res$duplicates)
+            incProgress(1, detail = "Done")
+        })
+        gc()
+    })
 
     observeEvent(input$run_temp, {
          atoms <- atoms_r()
          req(atoms)
+         temp_ran_r(TRUE)
          thr <- as.numeric(input$gap_thr) * 60
          withProgress(message = "Scanning temporal consistency", value = 0, {
              incProgress(0.3, detail = "Grouping by participant")
@@ -1131,6 +1190,7 @@ server <- function(input, output, session) {
              ovl_r(res$overlaps)
              incProgress(1, detail = "Done")
          })
+         gc()
      })
     
     output$integrity_ui <- renderUI({
@@ -1142,7 +1202,7 @@ server <- function(input, output, session) {
             ))
         }
         
-        ran_any <- isTRUE(input$run_label >= 1) || isTRUE(input$run_dup >= 1) || isTRUE(input$run_temp >= 1)
+        ran_any <- isTRUE(label_ran_r()) || isTRUE(dup_ran_r()) || isTRUE(temp_ran_r())
         if (!ran_any) {
             return(placeholder_box(
                 title = "Integrity checks not yet run",
@@ -1151,9 +1211,9 @@ server <- function(input, output, session) {
             ))
         }
         
-        label_clear <- isTRUE(input$run_label >= 1) && !nrow(label_vio_r())
-        dup_clear   <- isTRUE(input$run_dup   >= 1) && !nrow(dup_r())
-        temp_clear  <- isTRUE(input$run_temp  >= 1) && !nrow(gap_r()) && !nrow(ovl_r())
+        label_clear <- isTRUE(label_ran_r()) && !nrow(label_vio_r())
+        dup_clear   <- isTRUE(dup_ran_r())   && !nrow(dup_r())
+        temp_clear  <- isTRUE(temp_ran_r())  && !nrow(gap_r()) && !nrow(ovl_r())
         
         any_rows <- nrow(label_vio_r()) || nrow(dup_r()) || nrow(gap_r()) || nrow(ovl_r())
         
@@ -1164,7 +1224,7 @@ server <- function(input, output, session) {
                 type = "success"
             ),
             
-            if (isTRUE(input$run_label >= 1)) {
+            if (isTRUE(label_ran_r())) {
                 if (nrow(label_vio_r())) {
                     tagList(h4("Label integrity"), DTOutput("lab_vio_tbl"))
                 } else {
@@ -1172,7 +1232,7 @@ server <- function(input, output, session) {
                 }
             },
             
-            if (isTRUE(input$run_dup >= 1)) {
+            if (isTRUE(dup_ran_r())) {
                 if (nrow(dup_r())) {
                     tagList(h4("Duplicates"), DTOutput("dup_tbl"))
                 } else {
@@ -1180,7 +1240,7 @@ server <- function(input, output, session) {
                 }
             },
             
-            if (isTRUE(input$run_temp >= 1)) {
+            if (isTRUE(temp_ran_r())) {
                 if (nrow(gap_r())) {
                     tagList(h4("Temporal gaps"), DTOutput("gap_tbl"))
                 } else {
@@ -1188,7 +1248,7 @@ server <- function(input, output, session) {
                 }
             },
             
-            if (isTRUE(input$run_temp >= 1)) {
+            if (isTRUE(temp_ran_r())) {
                 if (nrow(ovl_r())) {
                     tagList(h4("Temporal overlaps"), DTOutput("ovl_tbl"))
                 } else {
@@ -1215,6 +1275,7 @@ server <- function(input, output, session) {
     observeEvent(input$run_cq6, {
         atoms <- atoms_r()
         req(atoms, input$pid, input$w_start_utc, input$w_dur_val, input$w_dur_unit)
+        cq6_ran_r(TRUE)
         withProgress(message = "Running temporal scoping", value = 0, {
             incProgress(0.2, detail = "Computing window")
             ws <- parse_utc(trimws(input$w_start_utc))
@@ -1250,6 +1311,7 @@ server <- function(input, output, session) {
             cq6_r(retriever(atoms, input$pid, ws, we, tz = "UTC"))
             incProgress(1, detail = "Done")
         })
+        gc()
     })
     
     output$cq6_ui <- renderUI({
@@ -1262,7 +1324,7 @@ server <- function(input, output, session) {
             ))
         }
         
-        if (is.null(cq6)) {
+        if (!isTRUE(cq6_ran_r()) || is.null(cq6)) {
             return(placeholder_box(
                 title = "Temporal scoping not yet run",
                 text = "Set the participant and time window, then run temporal scoping to view the scoped Atom table and plot.",
@@ -1332,11 +1394,13 @@ server <- function(input, output, session) {
     observeEvent(input$run_cq7, {
         atoms <- atoms_r()
         req(atoms, input$pid)
+        cq7_ran_r(TRUE)
         withProgress(message = "Running per-day summary scoping", value = 0, {
             incProgress(0.3, detail = "Aggregating by day")
             cq7_r(summariser(atoms, input$pid, per_day = TRUE, day_cut_hour = input$day_cut))
             incProgress(1, detail = "Done")
         })
+        gc()
     })
     
     output$cq7_ui <- renderUI({
@@ -1349,7 +1413,7 @@ server <- function(input, output, session) {
             ))
         }
         
-        if (is.null(cq7)) {
+        if (!isTRUE(cq7_ran_r()) || is.null(cq7)) {
             return(placeholder_box(
                 title = "Per-day summary scoping not yet run",
                 text = "Run per-day summary scoping to generate the daily summary table and stacked plot.",
@@ -1409,20 +1473,21 @@ server <- function(input, output, session) {
                 ctx_doc <- read_json_any(input$context$datapath)
                 ctx <- ctx_doc[["@context"]] %||% ctx_doc
             } else {
-                default_ctx_path <- "https://raw.githubusercontent.com/miltheo/coel/main/utilities/jsonld/context.jsonld"
-                ctx_doc <- read_json_any(to_src(default_ctx_path))
+                default_ctx_path <- "context.jsonld"
+                ctx_doc <- read_json_any(default_ctx_path)
                 ctx <- ctx_doc[["@context"]] %||% ctx_doc
             }
             incProgress(0.7, detail = "Projecting payload")
             jsonld_r(payload_to_jsonld(atoms, ctx))
             incProgress(1, detail = "Done")
         })
+        gc()
     })
     
     output$dl_jsonld <- downloadHandler(
         filename = function() paste0("coel_atoms_payload.jsonld"),
         content = function(file) {
-            req(jsonld_r())
+            if (is.null(jsonld_r())) stop("Please click 'Create JSON-LD' first.")
             write_json_any(jsonld_r(), file, gzip = FALSE)
         }
     )

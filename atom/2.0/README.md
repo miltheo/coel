@@ -69,3 +69,4 @@ The full technical specification, including schema, constraints, examples, and e
 - Repository root: `https://w3id.org/coel/`
 - COEL Model v2.0: `https://w3id.org/coel/models/coel/2.0/`
 - COEL Web Application: `https://w3id.org/coel/app/`
+- JSON-LD projection resources: `https://w3id.org/coel/utilities/jsonld/`

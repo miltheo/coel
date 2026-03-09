@@ -17,6 +17,7 @@ Nothing in this repository should be interpreted as an official OASIS publicatio
 - **COEL Behavioural Atom v2.0:** `https://w3id.org/coel/atom/2.0/`
 - **COEL Model v2.0:** `https://w3id.org/coel/models/coel/2.0/`
 - **Mappings:** `https://w3id.org/coel/mapping/`
+- **JSON-LD projection resources:** `https://w3id.org/coel/utilities/jsonld/`
 
 Additional persistent identifiers resolve through the repository folder structure and are documented within the corresponding subdirectory README files.
 
@@ -35,7 +36,7 @@ Additional persistent identifiers resolve through the repository folder structur
   Mapping files linking external models to COEL model concepts.
 
 - `utilities/`  
-  Supporting code, example data, and JSON-LD file used in the accompanying study.
+  Supporting code, example data, and JSON-LD projection resources used in the accompanying study.
 
 ## Citation
 
