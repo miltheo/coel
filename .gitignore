@@ -2,7 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
-utilities/code/
+
+# Local application workspace; excluded from the public COEL v2.0 release.
+app/
+
 utilities/data/atoms_participants/behavioural_bout/
 utilities/data/atoms_payload/behavioural_bout/
 utilities/data/research_paper_results/

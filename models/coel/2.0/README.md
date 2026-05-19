@@ -4,8 +4,6 @@ Canonical IRI: `https://w3id.org/coel/models/coel/2.0/`
 
 This folder contains the versioned public resources for **COEL Model v2.0**.
 
-COEL Model v2.0 is provided as part of the COEL v2.0 ecosystem and is being prepared as a published companion resource to a future COEL v2.0 manuscript.
-
 ## Purpose
 
 COEL Model v2.0 provides the versioned behaviour classification registry used within the COEL ecosystem. It supports consistent classification, lookup, validation, mapping, and reference across Atom payloads and related implementation resources.

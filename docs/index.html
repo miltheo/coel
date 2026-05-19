@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COEL v2.0</title>
+  <link rel="stylesheet" href="assets/coel.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./">COEL v2.0</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="./" aria-current="page">Overview</a>
+        <a href="atom/2.0/">Atom</a>
+        <a href="models/">Models</a>
+        <a href="mapping/">Mappings</a>
+        <a href="utilities/jsonld/">JSON-LD</a>
+        <a href="w3id-redirects.md">w3id</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <p class="kicker">Classification of Everyday Living</p>
+    <h1>COEL v2.0 public artefacts</h1>
+    <p class="lead">
+      COEL v2.0 provides versioned resources for representing behavioural events, publishing classification registries, and mapping implementation-specific labels to COEL concepts.
+    </p>
+
+    <dl class="summary" aria-label="Release summary">
+      <div>
+        <dt>Namespace</dt>
+        <dd><a href="https://w3id.org/coel/">https://w3id.org/coel/</a></dd>
+      </div>
+      <div>
+        <dt>Canonical model artefacts</dt>
+        <dd>CSV registries</dd>
+      </div>
+      <div>
+        <dt>Relationship to COEL v1.0</dt>
+        <dd>Builds on OASIS COEL v1.0 concepts</dd>
+      </div>
+    </dl>
+
+    <section aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Core Resources</h2>
+      <p>
+        The persistent namespace is expected to resolve document paths to these HTML pages and concrete artefact paths to raw files. The repository is an independent public artefact collection and is not an official OASIS publication unless explicitly stated.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Resource</th>
+              <th>Version</th>
+              <th>Canonical IRI</th>
+              <th>Source path</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="atom/2.0/">COEL Behavioural Atom schema</a></td>
+              <td>2.0</td>
+              <td><a href="https://w3id.org/coel/atom/2.0/coel-atom.json">https://w3id.org/coel/atom/2.0/coel-atom.json</a></td>
+              <td><code>atom/2.0/coel-atom.json</code></td>
+              <td><span class="tag">Normative JSON Schema</span></td>
+            </tr>
+            <tr>
+              <td><a href="atom/2.0/">COEL Atom extension registry</a></td>
+              <td>2.0</td>
+              <td><a href="https://w3id.org/coel/atom/2.0/extension-registry.csv">https://w3id.org/coel/atom/2.0/extension-registry.csv</a></td>
+              <td><code>atom/2.0/extension-registry.csv</code></td>
+              <td><span class="tag">Normative CSV</span></td>
+            </tr>
+            <tr>
+              <td><a href="models/coel/2.0/">COEL Model registry</a></td>
+              <td>2.0</td>
+              <td><a href="https://w3id.org/coel/models/coel/2.0/">https://w3id.org/coel/models/coel/2.0/</a></td>
+              <td><code>models/coel/2.0/coel-model-v2.0.csv</code></td>
+              <td><span class="tag">Normative CSV</span></td>
+            </tr>
+            <tr>
+              <td><a href="models/activinsights/behavioural_bout/1.0/">Behavioural Bout Model registry</a></td>
+              <td>1.0</td>
+              <td><a href="https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/">https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/</a></td>
+              <td><code>models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.csv</code></td>
+              <td><span class="tag">Normative CSV</span></td>
+            </tr>
+            <tr>
+              <td><a href="models/activinsights/rest_activity/1.0/">Rest Activity Model registry</a></td>
+              <td>1.0</td>
+              <td><a href="https://w3id.org/coel/models/activinsights/rest_activity/1.0/">https://w3id.org/coel/models/activinsights/rest_activity/1.0/</a></td>
+              <td><code>models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.csv</code></td>
+              <td><span class="tag">Normative CSV</span></td>
+            </tr>
+            <tr>
+              <td><a href="mapping/">Model mappings</a></td>
+              <td>1.0 to 2.0</td>
+              <td><a href="https://w3id.org/coel/mapping/">https://w3id.org/coel/mapping/</a></td>
+              <td><code>mapping/*.csv</code></td>
+              <td><span class="tag">Normative CSV</span></td>
+            </tr>
+            <tr>
+              <td><a href="utilities/jsonld/">JSON-LD context</a></td>
+              <td>2.0 projection</td>
+              <td><a href="https://w3id.org/coel/utilities/jsonld/context.jsonld">https://w3id.org/coel/utilities/jsonld/context.jsonld</a></td>
+              <td><code>utilities/jsonld/context.jsonld</code></td>
+              <td><span class="tag">Projection resource</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="policy-heading">
+      <h2 id="policy-heading">Source Policy</h2>
+      <p>
+        Classification model CSV registries are the canonical model artefacts and IRI targets. JSON and Turtle serialisations are derived outputs generated from the CSV registries by the reusable R conversion utilities.
+      </p>
+      <p>
+        Folder paths use <code>behavioural_bout</code>; file names use <code>behavioural-bout</code>. Stable IRIs in registry <code>iri</code> columns should not be changed without release governance review.
+      </p>
+    </section>
+
+    <section aria-labelledby="quick-start-heading">
+      <h2 id="quick-start-heading">Quick Start</h2>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <h3>Validate Atom payloads</h3>
+          <p>Use the Atom v2.0 JSON Schema with the validation utilities for example and implementation payloads.</p>
+          <p><code>Rscript utilities/code/COEL_payload_validation.R</code></p>
+        </article>
+        <article class="resource-card">
+          <h3>Export JSON-LD</h3>
+          <p>Apply the published context to structurally valid Atom JSON payloads for linked-data workflows.</p>
+          <p><code>Rscript utilities/code/COEL_Atoms_to_jsonld.R</code></p>
+        </article>
+        <article class="resource-card">
+          <h3>Aggregate through mappings</h3>
+          <p>Use mapping CSV files to connect implementation-specific labels to COEL Model v2.0 concepts.</p>
+          <p><code>Rscript utilities/code/COEL_jsonld_cq7_cq8.R</code></p>
+        </article>
+        <article class="resource-card">
+          <h3>Regenerate derived files</h3>
+          <p>Regenerate JSON and Turtle serialisations from the canonical model and mapping CSV files.</p>
+          <p><code>Rscript utilities/code/COEL_model_csv_to_ttl.R</code></p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="governance-heading">
+      <h2 id="governance-heading">Citation, Licence, and Governance</h2>
+      <p>
+        Cite the versioned repository release used in your work, and cite OASIS COEL v1.0 where that standard is relevant. Licence information is provided in <a href="https://github.com/miltheo/coel/blob/main/LICENSE">LICENSE</a>.
+      </p>
+      <p>
+        Updates should preserve stable IRIs, keep CSV registries as the source of truth for classification models, and document regenerated derived artefacts in release notes.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/miltheo/coel">Repository</a>
+        <a class="button" href="w3id-redirects.md">Redirect plan</a>
+        <a class="button" href="https://github.com/miltheo/coel/blob/main/PUBLIC_RELEASE_CHECKLIST.md">Release checklist</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Maintained by Millen J. Theophilus and collaborators.</div>
+  </footer>
+</body>
+</html>

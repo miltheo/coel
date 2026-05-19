@@ -1,6 +1,6 @@
 # ActivInsights Behavioural Bout Model v1.0
 
-Canonical IRI: `https://w3id.org/coel/models/activinsights/behaviour_bout/1.0/`
+Canonical IRI: `https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/`
 
 This folder contains the versioned public resources for **ActivInsights Behavioural Bout Model v1.0**.
 
@@ -9,13 +9,13 @@ This model is provided as an implementation-specific behaviour classification re
 ## Included artefacts
 
 - `behavioural-bout-model-v1.0.csv`  
-  Tabular registry for the model.
+  Normative tabular registry for the model.
 
 - `behavioural-bout-model-v1.0.json`  
-  JSON serialisation of the model registry.
+  Derived JSON serialisation of the model registry.
 
 - `behavioural-bout-model-v1.0.ttl`  
-  RDF/Turtle serialisation of the model registry.
+  Derived RDF/Turtle serialisation of the model registry.
 
 ## Notes
 

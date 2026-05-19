@@ -1,0 +1,259 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://w3id.org/coel/atom/2.0/coel-atom.json",
+  "title": "COEL Behavioural Atom v2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "Header",
+    "When",
+    "What",
+    "Who"
+  ],
+  "properties": {
+    "Header": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "AtomVersion"
+      ],
+      "properties": {
+        "AtomVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+        "AtomIRI": {
+          "type": "string"
+        },
+        "AtomID": {
+          "type": "string"
+        },
+        "ExtensionRegistry": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "When": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Duration"
+      ],
+      "properties": {
+        "TimeUTC": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "UTCOffset": {
+          "type": "integer"
+        },
+        "TimeISO": {
+          "type": "string"
+        },
+        "Duration": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "Accuracy": {
+          "type": "integer"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "TimeISO"
+          ]
+        },
+        {
+          "required": [
+            "TimeUTC",
+            "UTCOffset"
+          ]
+        }
+      ]
+    },
+    "What": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Label"
+      ],
+      "properties": {
+        "Label": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "LabelIRI": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Who": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ParticipantID": {
+          "type": "string",
+          "minLength": 1
+        },
+        "EnvironmentID": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "ParticipantID"
+          ]
+        },
+        {
+          "required": [
+            "EnvironmentID"
+          ]
+        }
+      ]
+    },
+    "How": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "EvidenceType": {
+          "type": "integer"
+        },
+        "EvidenceSystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ClassificationModel": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ClassificationModelIRI": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AssessmentTimeISO": {
+          "type": "string"
+        },
+        "EvidenceID": {
+          "type": "string"
+        }
+      }
+    },
+    "Where": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Exactness": {
+          "type": "integer"
+        },
+        "Latitude": {
+          "type": "number"
+        },
+        "Longitude": {
+          "type": "number"
+        },
+        "W3W": {
+          "type": "string"
+        },
+        "Place": {
+          "type": "integer"
+        },
+        "Postcode": {
+          "type": "string"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Social": {
+          "type": "integer"
+        },
+        "Weather": {
+          "type": "integer"
+        },
+        "ContextTag": {
+          "type": "integer"
+        },
+        "ContextValue": {
+          "type": "integer"
+        }
+      },
+      "dependencies": {
+        "ContextTag": [
+          "ContextValue"
+        ],
+        "ContextValue": [
+          "ContextTag"
+        ]
+      }
+    },
+    "Consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Jurisdiction": {
+          "type": "string"
+        },
+        "EventTime": {
+          "type": "string"
+        },
+        "RetentionPeriod": {
+          "type": "string"
+        },
+        "Purpose": {
+          "type": "string"
+        },
+        "PrivacyNotice": {
+          "type": "string"
+        },
+        "RecordID": {
+          "type": "string"
+        },
+        "PartyID": {
+          "type": "string"
+        }
+      },
+      "dependencies": {
+        "RecordID": [
+          "PartyID"
+        ],
+        "PartyID": [
+          "RecordID"
+        ]
+      }
+    },
+    "Extension": {
+      "type": "object",
+      "additionalProperties": true,
+      "propertyNames": {
+        "pattern": "^([A-Za-z][A-Za-z0-9_]*|_[A-Za-z0-9_]+)$"
+      },
+      "allOf": [
+        {
+          "not": {
+            "required": [
+              "Extension"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

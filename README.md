@@ -1,8 +1,6 @@
 # COEL
 
-This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification models, Atom schema resources, mapping files, semantic projection resources, and a Shiny web application.
-
-This repository is being prepared as a published companion resource to a **future COEL v2.0 manuscript**. It should therefore be treated as a versioned research and implementation resource.
+This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification model registries, Atom schema resources, mapping files, semantic projection resources, examples, and reusable utility code.
 
 ## Relationship to COEL v1.0
 
@@ -13,34 +11,38 @@ Nothing in this repository should be interpreted as an official OASIS publicatio
 ## Main entry points
 
 - **Root namespace:** `https://w3id.org/coel/`
-- **Shiny app:** `https://w3id.org/coel/app/`
+- **Expected GitHub Pages landing page:** `https://miltheo.github.io/coel/`
 - **COEL Behavioural Atom v2.0:** `https://w3id.org/coel/atom/2.0/`
 - **COEL Model v2.0:** `https://w3id.org/coel/models/coel/2.0/`
 - **Mappings:** `https://w3id.org/coel/mapping/`
 - **JSON-LD projection resources:** `https://w3id.org/coel/utilities/jsonld/`
 
-Additional persistent identifiers resolve through the repository folder structure and are documented within the corresponding subdirectory README files.
+Additional persistent identifiers resolve through the repository folder structure and are documented within the corresponding subdirectory README files and `docs/`.
 
 ## Repository structure
 
-- `app/`  
-  Shiny application resources and source code.
-
-- `atom/`  
+- `atom/`
   Versioned Atom schema resources.
 
-- `models/`  
-  Versioned behaviour classification model resources.
+- `models/`
+  Versioned behaviour classification model registries and derived serialisations.
 
-- `mapping/`  
-  Mapping files linking external models to COEL model concepts.
+- `mapping/`
+  Mapping files linking implementation-specific models to COEL model concepts.
 
-- `utilities/`  
-  Supporting code, example data, and JSON-LD projection resources used in the accompanying study.
+- `utilities/`
+  Supporting code, example data, and JSON-LD projection resources.
+
+- `docs/`
+  GitHub Pages documentation and draft w3id redirect notes.
+
+## Source policy
+
+Classification model CSV registries are the canonical model artefacts. Derived JSON and Turtle serialisations should be regenerated from the CSV registries using the reusable utilities in `utilities/code/`.
 
 ## Citation
 
-If you use these resources, please cite the relevant versioned repository release and the associated **future COEL v2.0 publication** once available. Where appropriate, also cite the official OASIS COEL v1.0 standard.
+If you use these resources, please cite the relevant versioned repository release. Where appropriate, also cite the official OASIS COEL v1.0 standard.
 
 ## Licence
 
@@ -53,4 +55,4 @@ See `LICENSE`.
 
 ## Acknowledgements
 
-This work builds on the COEL v1.0 standard and related community contributions. This repository is an implementation and research ecosystem resource and is not an official OASIS publication unless explicitly stated.
+This work builds on the COEL v1.0 standard and related community contributions. This repository is an implementation ecosystem resource and is not an official OASIS publication unless explicitly stated.

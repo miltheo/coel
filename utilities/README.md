@@ -4,15 +4,18 @@ Canonical IRI: `https://w3id.org/coel/utilities/`
 
 This folder contains supporting utility resources for the COEL v2.0 ecosystem.
 
-These resources are provided to support examples, semantic projection workflows, and related implementation materials associated with the accompanying study and repository.
+These resources support examples, semantic projection workflows, validation, and related implementation materials.
 
 ## Current structure
 
-- `data/`  
+- `code/`
+  Reusable R utilities for validation, conversion, JSON-LD projection, and mapping-based aggregation.
+
+- `data/`
   Example Atom resources, including payload-level and participant-level examples for demonstration and testing.
-  
-- `jsonld/`  
-  JSON-LD projection resources, including the study `context.jsonld` and guidance for compatible context files.
+
+- `jsonld/`
+  JSON-LD projection resources, including `context.jsonld` and guidance for compatible context files.
 
 Additional utility resources may be added in future repository updates.
 

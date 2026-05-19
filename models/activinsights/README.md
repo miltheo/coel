@@ -8,7 +8,7 @@ These models are implementation-specific resources contributed as part of the br
 
 ## Included model families
 
-- `behaviour_bout/`  
+- `behavioural_bout/`
   ActivInsights Behavioural Bout Model resources.
 
 - `rest_activity/`  
