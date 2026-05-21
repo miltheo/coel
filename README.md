@@ -1,12 +1,12 @@
 # COEL
 
-This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification model registries, Atom schema resources, mapping files, semantic projection resources, examples, and reusable utility code.
+This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification model registries, Atom schema resources, mapping files, optional semantic projection resources, and reusable utility code.
 
 ## Relationship to COEL v1.0
 
-**COEL v1.0** is an official OASIS standard. This repository builds on concepts introduced in that standard but contains additional project-specific artefacts, implementation resources, and draft extensions developed for the COEL v2.0 ecosystem.
+**COEL v1.0** is an OASIS standard. This repository builds on concepts introduced in that standard but contains additional project-specific artefacts, implementation resources, and extensions developed for the COEL v2.0 ecosystem.
 
-Nothing in this repository should be interpreted as an official OASIS publication unless explicitly stated.
+This repository is independent of OASIS and is not an OASIS publication.
 
 ## Main entry points
 
@@ -31,7 +31,7 @@ Additional persistent identifiers resolve through the repository folder structur
   Mapping files linking implementation-specific models to COEL model concepts.
 
 - `utilities/`
-  Supporting code, example data, and JSON-LD projection resources.
+  Supporting code and JSON-LD projection resources.
 
 - `docs/`
   GitHub Pages documentation and draft w3id redirect notes.
@@ -40,9 +40,11 @@ Additional persistent identifiers resolve through the repository folder structur
 
 Classification model CSV registries are the canonical model artefacts. Derived JSON and Turtle serialisations should be regenerated from the CSV registries using the reusable utilities in `utilities/code/`.
 
+The public release provides schemas, registries, mappings, derived serialisations, documentation, utilities, and a minimal synthetic Atom example. Private evaluation payloads, source-derived payload exports, generated validation outputs, and local application workspaces are not included as public release artefacts.
+
 ## Citation
 
-If you use these resources, please cite the relevant versioned repository release. Where appropriate, also cite the official OASIS COEL v1.0 standard.
+If you use these resources, please cite the relevant versioned repository release. Where appropriate, also cite the OASIS COEL v1.0 standard.
 
 ## Licence
 
@@ -55,4 +57,4 @@ See `LICENSE`.
 
 ## Acknowledgements
 
-This work builds on the COEL v1.0 standard and related community contributions. This repository is an implementation ecosystem resource and is not an official OASIS publication unless explicitly stated.
+This work builds on the COEL v1.0 standard and related community contributions. This repository is an independent implementation ecosystem resource and is not an OASIS publication.

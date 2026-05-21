@@ -30,7 +30,7 @@ bout_outld <- file.path(out_root, "behavioural_bout", "coel_atoms_payload.jsonld
 read_atoms_file <- function(path) {                                                         # read one per-participant atoms file
     x <- read_json_any(path)                                                                  # parse
     if (!is.list(x)) stop("Not a JSON array: ", path)                                         # check
-    x                                                                                           
+    x
 }
 
 check_duplicate_atom_ids <- function(atoms) {                                               # stop if AtomID duplicates exist
@@ -63,7 +63,7 @@ ensure_labeliri_set <- function(a) {                                            
     v <- a$What$LabelIRI                                                                      # current
     if (is.character(v)) a$What$LabelIRI <- as.list(v)                                        # scalar -> list
     if (is.list(v) && !is.null(names(v))) a$What$LabelIRI <- unname(v)                        # named -> unnamed
-    a                                                                                           
+    a
 }
 
 payload_to_jsonld <- function(payload_atoms, context_path) {                                # build JSON-LD document
@@ -74,7 +74,7 @@ payload_to_jsonld <- function(payload_atoms, context_path) {                    
         aid <- a$Header$AtomID %||% NA_character_                                               # AtomID
         if (!is.na(aid) && nzchar(aid)) a[["@id"]] <- mint_atom_urn(aid)                        # add @id
         a <- ensure_labeliri_set(a)                                                             # normalise LabelIRI
-        a                                                                                           
+        a
     })
     list(`@context` = ctx, `@graph` = atoms)                                                  # JSON-LD doc
 }
@@ -100,13 +100,13 @@ combine_atoms_to_payload(bout_in, bout_out, pattern = "\\.json$", gzip = TRUE)  
 project_payload_file_to_jsonld(rest_out, context_fp, rest_outld, gzip = TRUE)              # rest jsonld
 project_payload_file_to_jsonld(bout_out, context_fp, bout_outld, gzip = TRUE)              # bout jsonld
 
-cat("Done\n")                                                                               
-cat("Rest JSON-LD: ", rest_outld, "\n")                                                    
-cat("Bout JSON-LD: ", bout_outld, "\n")                                                     
+cat("Done\n")
+cat("Rest JSON-LD: ", rest_outld, "\n")
+cat("Bout JSON-LD: ", bout_outld, "\n")
 
 # doc <- jsonlite::fromJSON(rest_outld, simplifyVector = FALSE)
 # atoms <- doc[["@graph"]]
 # sum(vapply(atoms, function(a) is.null(a[["@id"]]) || !nzchar(as.character(a[["@id"]])), logical(1)))
-# 
+#
 # i <- which(vapply(atoms, function(a) is.null(a[["@id"]]) || !nzchar(as.character(a[["@id"]])), logical(1)))[1]
 # atoms[[i]]$Header$AtomID

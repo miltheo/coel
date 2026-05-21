@@ -38,6 +38,23 @@ a:hover {
   color: var(--accent-dark);
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  z-index: 10;
+  transform: translateY(-150%);
+  padding: 0.45rem 0.7rem;
+  border-radius: 6px;
+  background: var(--accent-dark);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 code {
   padding: 0.08rem 0.24rem;
   border-radius: 4px;
@@ -160,6 +177,7 @@ p {
 .summary div,
 .note,
 .resource-card {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--subtle);
@@ -176,6 +194,16 @@ p {
 .summary dd {
   margin: 0.2rem 0 0;
   font-weight: 700;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.summary a,
+.resource-card a,
+.note a,
+td a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .table-wrap {
@@ -190,6 +218,15 @@ table {
   width: 100%;
   min-width: 760px;
   border-collapse: collapse;
+}
+
+caption {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: left;
 }
 
 th,

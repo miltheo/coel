@@ -6,7 +6,7 @@ This folder contains JSON-LD projection resources for the COEL v2.0 ecosystem.
 
 ## Purpose
 
-The resources in this folder support optional JSON-LD projection of valid COEL Behavioural Atom v2.0 JSON payloads. The projection is intended for semantic export, RDF construction, and query-based workflows, while preserving JSON as the normative Atom exchange format.
+The resources in this folder support optional JSON-LD projection of valid COEL Behavioural Atom v2.0 JSON payloads. The projection is intended for semantic export, RDF construction, and query-based workflows, while preserving JSON as the Atom exchange format.
 
 ## Included artefacts
 
@@ -17,7 +17,7 @@ The resources in this folder support optional JSON-LD projection of valid COEL B
 
 A compatible context file should:
 
-- use fields defined in the normative COEL Atom JSON structure
+- use fields defined in the COEL Atom JSON structure
 - respect the nesting of Atom elements such as `Header`, `When`, `What`, `Who`, and optional `How`
 - specify which fields are literals, typed literals, IRIs, or sets
 - preserve the optionality of blocks that may be absent in valid Atom payloads

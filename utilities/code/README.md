@@ -12,7 +12,7 @@ This folder contains reproducible R utilities used with the COEL v2.0 artefacts.
 - `COEL_model_csv_to_ttl.R` converts model registry CSV files into derived Turtle serialisations.
 - `COEL_map_csv_to_ttl.R` converts mapping CSV files into derived SKOS/Turtle mapping files.
 - `COEL_Atoms_to_jsonld.R` combines per-participant Atom JSON files and projects payloads to JSON-LD.
-- `COEL_payload_validation.R` runs validation and seeded error-detection checks over Atom payloads.
+- `COEL_payload_validation.R` runs validation and synthetic-token error-detection checks over Atom payloads.
 - `COEL_jsonld_cq7_cq8.R` builds the study knowledge graph and mapping-based aggregation outputs.
 - `COEL_payload_data_summary.R` creates stream and mapping coverage summary tables.
 - `COEL_temporal_retreiver_summariser_CQ6_CQ7.R` provides temporal retrieval and summary helpers.

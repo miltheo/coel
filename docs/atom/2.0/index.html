@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>COEL Behavioural Atom v2.0 | COEL v2.0</title>
+  <meta name="description" content="COEL Behavioural Atom v2.0 JSON Schema and extension registry for behavioural event exchange.">
+  <title>COEL v2.0 | Behavioural Atom 2.0</title>
   <link rel="stylesheet" href="../../assets/coel.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../../">COEL v2.0</a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="../../">Overview</a>
+        <a href="../../namespace/">Namespace</a>
         <a href="./" aria-current="page">Atom</a>
         <a href="../../models/">Models</a>
         <a href="../../mapping/">Mappings</a>
-        <a href="../../utilities/jsonld/">JSON-LD</a>
-        <a href="../../w3id-redirects.md">w3id</a>
+        <a href="../../utilities/">Utilities</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <p class="breadcrumb"><a href="../../">COEL v2.0</a> / Atom / 2.0</p>
     <p class="kicker">Exchange format</p>
     <h1>COEL Behavioural Atom v2.0</h1>
@@ -40,7 +42,7 @@
       </div>
       <div>
         <dt>Primary role</dt>
-        <dd>Normative JSON Schema</dd>
+        <dd>JSON Schema</dd>
       </div>
     </dl>
 
@@ -48,12 +50,13 @@
       <h2 id="files-heading">Files</h2>
       <div class="table-wrap">
         <table>
+          <caption>Atom schema and extension registry files.</caption>
           <thead>
             <tr>
-              <th>File</th>
-              <th>IRI</th>
-              <th>Repository path</th>
-              <th>Role</th>
+              <th scope="col">File</th>
+              <th scope="col">IRI</th>
+              <th scope="col">Repository path</th>
+              <th scope="col">Role</th>
             </tr>
           </thead>
           <tbody>
@@ -61,13 +64,13 @@
               <td>COEL Atom schema</td>
               <td><a href="https://w3id.org/coel/atom/2.0/coel-atom.json">https://w3id.org/coel/atom/2.0/coel-atom.json</a></td>
               <td><code>atom/2.0/coel-atom.json</code></td>
-              <td><span class="tag">Normative</span></td>
+              <td><span class="tag">JSON Schema</span></td>
             </tr>
             <tr>
               <td>Extension registry</td>
               <td><a href="https://w3id.org/coel/atom/2.0/extension-registry.csv">https://w3id.org/coel/atom/2.0/extension-registry.csv</a></td>
               <td><code>atom/2.0/extension-registry.csv</code></td>
-              <td><span class="tag">Normative</span></td>
+              <td><span class="tag">Extension registry CSV</span></td>
             </tr>
           </tbody>
         </table>
@@ -79,6 +82,7 @@
       <ul class="list">
         <li>An Atom must identify a participant, an environment, or both.</li>
         <li>The structure is designed to avoid direct personal identifiers.</li>
+        <li>A minimal synthetic Atom example is included at <code>atom/2.0/examples/minimal-atom-example.json</code>; private evaluation payloads are excluded.</li>
         <li>JSON-LD projection resources are maintained separately and do not replace the JSON exchange format.</li>
       </ul>
     </section>

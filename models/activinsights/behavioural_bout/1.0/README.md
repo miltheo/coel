@@ -9,7 +9,7 @@ This model is provided as an implementation-specific behaviour classification re
 ## Included artefacts
 
 - `behavioural-bout-model-v1.0.csv`  
-  Normative tabular registry for the model.
+  Canonical CSV registry for the model.
 
 - `behavioural-bout-model-v1.0.json`  
   Derived JSON serialisation of the model registry.

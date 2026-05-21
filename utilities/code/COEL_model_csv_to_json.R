@@ -26,7 +26,7 @@ build_model_json <- function(csv_path,
                              model_id,
                              version = "1.0.0",
                              out_json_path = NULL) {
-  
+
   terms <- readr::read_csv(
     csv_path,
     col_types = cols(
@@ -36,7 +36,7 @@ build_model_json <- function(csv_path,
       is_output    = col_logical()
     )
   )
-  
+
   # Preserve existing stable IRIs when the canonical CSV already has an iri column.
   terms <- terms %>%
     dplyr::mutate(
@@ -47,7 +47,7 @@ build_model_json <- function(csv_path,
         paste0(base_iri, "#", iri_fragment)
       }
     )
-  
+
   # Check for collisions
   if (any(duplicated(terms$iri_fragment))) {
     dup <- terms$label[duplicated(terms$iri_fragment) |
@@ -55,12 +55,12 @@ build_model_json <- function(csv_path,
     stop("Duplicate IRI fragments derived from labels: ",
          paste(unique(dup), collapse = ", "))
   }
-  
+
   # Write updated CSV with iri column (canonical + iri)
   terms_for_csv <- terms %>%
     dplyr::select(label, parent_label, description, is_output, iri)
   readr::write_csv(terms_for_csv, csv_path)
-  
+
   # Wrap into a canonical JSON structure
   model_json <- list(
     modelName    = model_name,
@@ -73,19 +73,19 @@ build_model_json <- function(csv_path,
     terms        = terms %>%
       dplyr::select(label, parent_label, description, is_output, iri)
   )
-  
+
   if (is.null(out_json_path)) {
     stem <- tools::file_path_sans_ext(basename(csv_path))
     out_json_path <- file.path(dirname(csv_path), paste0(stem, ".json"))
   }
-  
+
   jsonlite::write_json(
     model_json,
     out_json_path,
     pretty     = TRUE,
     auto_unbox = TRUE
   )
-  
+
   invisible(out_json_path)
 }
 
@@ -109,4 +109,3 @@ build_model_json(
   version       = "1.0",
   out_json_path = file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.json")
 )
-

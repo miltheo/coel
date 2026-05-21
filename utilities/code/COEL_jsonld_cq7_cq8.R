@@ -92,42 +92,42 @@ atoms_to_df <- function(atoms_jsonld_path, stream) {                            
     doc <- jsonlite::fromJSON(atoms_jsonld_path, simplifyVector = FALSE)                    # read jsonld
     atoms <- doc[["@graph"]]                                                                # atoms
     if (!length(atoms)) return(data.frame())                                                # empty
-    
+
     pid <- vapply(atoms, function(a) {                                                      # participant ids
         if (is.null(a$Who$ParticipantID)) return(NA_character_)
         as.character(a$Who$ParticipantID[[1]])
     }, character(1))
-    
+
     keep <- which(pid == participant_id)                                                    # keep participant atoms
     if (!length(keep)) return(data.frame())                                                 # empty
-    
+
     atom_iri <- vapply(atoms[keep], function(a) {                                           # Atom subject IRI
         x <- a[["@id"]]
         if (is.null(x)) NA_character_ else as.character(x)
     }, character(1))
-    
+
     t0  <- vapply(atoms[keep], function(a) as.numeric(a$When$TimeUTC[[1]]), numeric(1))      # start utc
     dur <- vapply(atoms[keep], function(a) as.numeric(a$When$Duration[[1]]), numeric(1))     # duration
-    
+
     iris <- lapply(atoms[keep], function(a) {                                               # label iris
       z <- as.character(unlist(a$What$LabelIRI, use.names = FALSE))
       z[nz(z)]
     })
-    
+
     # ---- 48h window from first Atom (speeds up behavioural_bout) ----
     t1 <- t0 + dur                                                                            # end times
     w0 <- min(t0, na.rm = TRUE)                                                               # window start
     w1 <- w0 + 48 * 3600                                                                      # window end (48h)
-    
+
     k <- which(t0 < w1 & t1 > w0)                                                             # overlap filter
     if (!length(k)) return(data.frame())
-    
+
     atom_iri <- atom_iri[k]
     t0 <- t0[k]
     dur <- dur[k]
     iris <- iris[k]
     keep <- keep[k]
-    
+
     data.frame(stream = stream, atom_i = seq_along(t0), atom_iri = atom_iri,
                t0 = t0, dur_s = dur, label_iris = I(iris),
                stringsAsFactors = FALSE)
@@ -182,13 +182,13 @@ resolve_mapping_triples <- function(map_path, src_reg_path, coel_reg_path,
     if (is.na(lab_col) || is.na(code_col)) stop_cols(m, "Mapping CSV must contain source label + COEL code columns.")
     map_type <- if (is.na(type_col)) rep("skos:closeMatch", nrow(m)) else m[[type_col]]
     map_type <- norm_map_type(map_type)
-    
+
     src_map  <- read_source_label_to_iri(src_reg_path)
     coel_map <- read_coel_code_to_iri(coel_reg_path)
-    
+
     src_iri <- unname(src_map[as.character(m[[lab_col]])])
     coel_iri <- unname(coel_map[as.character(m[[code_col]])])
-    
+
     keep <- nz(src_iri) & nz(coel_iri) & map_type %in% allowed
     data.frame(source_iri = src_iri[keep], coel_iri = coel_iri[keep], mapping_type = map_type[keep],
                stringsAsFactors = FALSE)
@@ -220,12 +220,12 @@ coverage_text <- function(atoms_df) {
 plot_bar_console <- function(d, title, subtitle = NULL, top_n = 12, fill = NULL) {
     if (!nrow(d)) return(invisible(NULL))
     dd <- head(d, top_n)
-    dd$label <- factor(dd$label, levels = dd$label) 
+    dd$label <- factor(dd$label, levels = dd$label)
     p <- ggplot(dd, aes(x = label, y = duration_h)) +
         geom_col(aes(fill = label), show.legend = FALSE) +
         coord_flip() + theme_bw() +
         labs(x = NULL, y = "Duration (hours)", title = title, subtitle = subtitle) +
-        geom_text(aes(label = sprintf("%.1f", duration_h)), hjust = -0.05, size = 3) + 
+        geom_text(aes(label = sprintf("%.1f", duration_h)), hjust = -0.05, size = 3) +
         expand_limits(y = max(dd$duration_h) * 1.10)
     if (!is.null(fill)) p <- p + scale_fill_manual(values = fill)
     p
@@ -283,7 +283,7 @@ attach_labels <- function(res_df, coel_iri_to_label) {                          
     d[order(d$duration_h, decreasing = TRUE), , drop = FALSE]
 }
 
-plot_bar_mapped <- function(d, title, out_png, top_n = 12) {                             # manuscript figure
+plot_bar_mapped <- function(d, title, out_png, top_n = 12) {                             # mapped roll-up figure
     if (!nrow(d)) return(invisible(NULL))
     dd <- head(d, top_n)
     p <- ggplot(dd, aes(x = reorder(coel_label, duration_h), y = duration_h)) +

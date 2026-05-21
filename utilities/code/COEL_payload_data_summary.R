@@ -50,22 +50,22 @@ read_atoms_json <- function(path) {
 atoms_to_df_min <- function(atoms, stream_name) {
     n <- length(atoms)
     out <- vector("list", n)
-    
+
     for (i in seq_len(n)) {
         a <- atoms[[i]]
-        
+
         lbl <- get_in(a, c("What", "Label"), default = character(0))
         iri <- get_in(a, c("What", "LabelIRI"), default = character(0))
-        
+
         native_label <- if (length(lbl) >= 1) as.character(lbl[[1]]) else NA_character_
         coel_code    <- if (length(lbl) >= 2) as.character(lbl[[2]]) else NA_character_
         native_iri   <- if (length(iri) >= 1) as.character(iri[[1]]) else NA_character_
         coel_iri     <- if (length(iri) >= 2) as.character(iri[[2]]) else NA_character_
-        
+
         time_utc    <- suppressWarnings(as.numeric(get_in(a, c("When", "TimeUTC"), default = NA)))
         duration_s  <- suppressWarnings(as.numeric(get_in(a, c("When", "Duration"), default = NA)))
         end_utc     <- if (!is.na(time_utc) && !is.na(duration_s)) time_utc + duration_s else NA_real_
-        
+
         out[[i]] <- data.frame(
             stream = stream_name,
             atom_id = as.character(get_in(a, c("Header", "AtomID"), default = NA_character_)),
@@ -80,7 +80,7 @@ atoms_to_df_min <- function(atoms, stream_name) {
             stringsAsFactors = FALSE
         )
     }
-    
+
     do.call(rbind, out)
 }
 
@@ -91,7 +91,7 @@ stream_summary <- function(df, json_path = NA_character_, gz_path = NA_character
     participants <- df$participant_id[!is.na(df$participant_id) & nzchar(df$participant_id)]
     native_labels <- df$native_label[!is.na(df$native_label) & nzchar(df$native_label)]
     coel_codes <- df$coel_code[!is.na(df$coel_code) & nzchar(df$coel_code)]
-    
+
     data.frame(
         stream = unique(df$stream)[1],
         atoms_n = nrow(df),
@@ -113,29 +113,29 @@ stream_summary <- function(df, json_path = NA_character_, gz_path = NA_character
 # ----------------------------
 
 load_coel_registry <- function(path) {
-    r <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE) 
-    code_col <- pick_col(r, c("code","Code","coel_code","COELCode","coelCode","id","ID")) 
-    iri_col <- pick_col(r, c("iri","IRI","labelIRI","LabelIRI","termIRI","TermIRI")) 
-    reg <- unique(data.frame( coel_code = as.character(r[[code_col]]), 
-                              coel_iri = as.character(r[[iri_col]]), 
-                              stringsAsFactors = FALSE )) 
-    reg[!is.na(reg$coel_code) & nzchar(reg$coel_code), , drop = FALSE] 
+    r <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
+    code_col <- pick_col(r, c("code","Code","coel_code","COELCode","coelCode","id","ID"))
+    iri_col <- pick_col(r, c("iri","IRI","labelIRI","LabelIRI","termIRI","TermIRI"))
+    reg <- unique(data.frame( coel_code = as.character(r[[code_col]]),
+                              coel_iri = as.character(r[[iri_col]]),
+                              stringsAsFactors = FALSE ))
+    reg[!is.na(reg$coel_code) & nzchar(reg$coel_code), , drop = FALSE]
 }
 
-load_mapping_native_to_coel <- function(path) 
-{ 
-    m <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE) 
+load_mapping_native_to_coel <- function(path)
+{
+    m <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
     native_col <- pick_col(m, c("label","Label","source_label","SourceLabel",
                                 "model_label","ModelLabel","native_label",
-                                "NativeLabel")) 
+                                "NativeLabel"))
     coel_col <- pick_col(m, c("coel_code","COELCode","coel","COEL","mapped_code",
-                              "MappedCOELCode")) 
-    mp <- unique(data.frame( 
-        native_label = as.character(m[[native_col]]), 
-        coel_code = as.character(m[[coel_col]]), 
-        stringsAsFactors = FALSE )) 
-    
-    mp[!is.na(mp$native_label) & nzchar(mp$native_label), , drop = FALSE] 
+                              "MappedCOELCode"))
+    mp <- unique(data.frame(
+        native_label = as.character(m[[native_col]]),
+        coel_code = as.character(m[[coel_col]]),
+        stringsAsFactors = FALSE ))
+
+    mp[!is.na(mp$native_label) & nzchar(mp$native_label), , drop = FALSE]
 }
 
 # helper: non-empty string
@@ -159,22 +159,22 @@ mapping_coverage_in_payload <- function(df) {
             stringsAsFactors = FALSE
         ))
     }
-    
+
     # For each native label, is there any non-empty coel_code in the payload?
     # Split rows by native label, then evaluate.
     rows_by_label <- split(df, df$native_label)
-    
+
     mapped_flag <- vapply(rows_by_label, function(dfi) {
         any(!is.na(dfi$coel_code) & nzchar(trimws(dfi$coel_code)))
     }, logical(1))
-    
+
     u_native <- names(rows_by_label)
     mapped_labels <- u_native[mapped_flag]
     unmapped_labels <- u_native[!mapped_flag]
-    
+
     # COEL codes observed in payload.
     u_coel <- unique(df$coel_code[!is.na(df$coel_code) & nzchar(df$coel_code)])
-    
+
     data.frame(
         stream = unique(df$stream)[1],
         unique_native_labels_n = length(u_native),
@@ -248,7 +248,7 @@ tbl_table5 <- tbl_table5[ord, , drop = FALSE]
 tbl_table5$start_time_utc <- NULL
 tbl_table5$end_time_utc <- NULL
 
-# Rename and order columns to match your manuscript Table 5
+# Rename and order columns for the payload summary table
 tbl_table5 <- tbl_table5[, c(
     "stream",
     "atoms_n",

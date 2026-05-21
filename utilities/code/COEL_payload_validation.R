@@ -7,7 +7,7 @@ helper_path <- file.path("utilities", "code", "coel_utilities.R")
 if (!file.exists(helper_path)) helper_path <- "coel_utilities.R"
 source(helper_path)
 
-coel_require(c("jsonlite", "charlatan"))
+coel_require(c("jsonlite"))
 
 # ============================================================
 # CONFIG (edit once)
@@ -23,8 +23,8 @@ registry_behaviour <- file.path(repo_root, "models", "activinsights", "behaviour
 registry_rest      <- file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.csv")        # registry
 registry_coel      <- file.path(repo_root, "models", "coel", "2.0", "coel-model-v2.0.csv")                                           # registry
 
-pii_forename_csv <- "https://github.com/sigpwned/popular-names-by-country-dataset/blob/main/common-forenames-by-country.csv"          # pii
-pii_surname_csv  <- "https://github.com/sigpwned/popular-names-by-country-dataset/blob/main/common-surnames-by-country.csv"           # pii
+pii_forename_csv <- character(0)                                                     # optional TEST5 dictionary inputs
+pii_surname_csv  <- character(0)                                                     # optional TEST5 dictionary inputs
 
 gap_threshold_sec <- 3600                                                             # CQ5 gap threshold
 pct_min <- 10                                                                          # percent range min
@@ -114,7 +114,7 @@ injector <- function(atoms,
                      enable_remove = TRUE,
                      enable_type_change = TRUE,
                      enable_string_corrupt = TRUE,
-                     enable_pii_inject = TRUE,
+                     enable_synthetic_name_token = TRUE,
                      enable_duplicate = TRUE,
                      enable_gap = TRUE,
                      gap_threshold_sec = 3600,
@@ -122,43 +122,43 @@ injector <- function(atoms,
                      remove_pool = c("When","What","Who"),
                      type_change_pool = c("When","What","Who"),
                      string_pool = c("What.Label","What.LabelIRI","How.ClassificationModel","How.ClassificationModelIRI"),
-                     pii_names = c("John Smith","Jane Doe"),
+                     synthetic_name_tokens = sprintf("SYNTHETIC_NAME_TOKEN_%03d", 1:2),
                      seed_main = 1,
                      seed_k = NULL) {
-    
+
     t0 <- Sys.time()                                                                     # timer
     n  <- length(atoms)                                                                  # atoms n
     if (!n) stop("injector: atoms is empty")                                             # guard
-    
+
     if (is.null(seed_k)) seed_k <- seed_main + 10007L                                    # seed for k draw
     set.seed(seed_k)                                                                     # seed k
     kmin <- max(0L, floor(n * (pct_min / 100)))                                          # k min
     kmax <- max(0L, floor(n * (pct_max / 100)))                                          # k max
     kvec <- if (kmax >= kmin) seq.int(kmin, kmax) else kmin                              # vector
     k <- if (length(kvec)) sample(kvec, 1) else 0L                                       # choose k
-    
+
     set.seed(seed_main)                                                                  # seed main for selections
     types <- character(0)                                                                # enabled types
     if (enable_remove) types <- c(types, "remove")
     if (enable_type_change) types <- c(types, "type_change")
     if (enable_string_corrupt) types <- c(types, "string_corrupt")
-    if (enable_pii_inject) types <- c(types, "pii_inject")
+    if (enable_synthetic_name_token) types <- c(types, "synthetic_name_token")
     if (enable_duplicate) types <- c(types, "duplicate")
     if (enable_gap) types <- c(types, "gap")
-    
+
     idx_all <- if (length(types) && k) sample.int(n, min(k, n)) else integer(0)          # affected atoms
     asn <- if (length(idx_all)) sample(rep(types, length.out = length(idx_all))) else character(0)
-    
+
     idx_rm  <- idx_all[asn == "remove"]
     idx_ty  <- idx_all[asn == "type_change"]
     idx_sc  <- idx_all[asn == "string_corrupt"]
-    idx_pii <- idx_all[asn == "pii_inject"]
+    idx_synth <- idx_all[asn == "synthetic_name_token"]
     idx_dup <- idx_all[asn == "duplicate"]
     idx_gap <- idx_all[asn == "gap"]
-    
+
     log <- data.frame(AtomID = character(0), path = character(0), action = character(0), existed = logical(0),
                       from = character(0), to = character(0), stringsAsFactors = FALSE)
-    
+
     if (length(idx_rm)) {                                                                # remove fields
         path <- sample(remove_pool, length(idx_rm), replace = TRUE)
         parts <- strsplit(gsub("\\$", ".", path), "\\.", fixed = FALSE)
@@ -171,7 +171,7 @@ injector <- function(atoms,
                                          from = NA_character_, to = NA_character_, stringsAsFactors = FALSE))
         }
     }
-    
+
     if (length(idx_ty)) {                                                                # type change
         path <- sample(type_change_pool, length(idx_ty), replace = TRUE)
         parts <- strsplit(gsub("\\$", ".", path), "\\.", fixed = FALSE)
@@ -186,7 +186,7 @@ injector <- function(atoms,
                                          stringsAsFactors = FALSE))
         }
     }
-    
+
     if (length(idx_sc)) {                                                                # string corrupt
         tok <- c("//","!!","??")
         path <- sample(string_pool, length(idx_sc), replace = TRUE)
@@ -213,8 +213,8 @@ injector <- function(atoms,
                                          stringsAsFactors = FALSE))
         }
     }
-    
-    if (length(idx_pii)) {                                                               # pii inject
+
+    if (length(idx_synth)) {                                                             # synthetic name-token inject
         get_str_paths <- function(x, pre = "") {
             nm <- names(x)
             if (!is.list(x) || is.null(nm)) return(character(0))
@@ -228,17 +228,17 @@ injector <- function(atoms,
             }
             out
         }
-        for (j in seq_along(idx_pii)) {
-            i <- idx_pii[j]
+        for (j in seq_along(idx_synth)) {
+            i <- idx_synth[j]
             cand <- get_str_paths(atoms[[i]])
             path <- if (length(cand)) sample(cand, 1) else NA_character_
             if (is.na(path)) {
                 log <- rbind(log, data.frame(AtomID = atoms[[i]]$Header$AtomID %||% NA_character_,
-                                             path = NA_character_, action = "PII inject", existed = FALSE,
+                                             path = NA_character_, action = "Synthetic name token", existed = FALSE,
                                              from = NA_character_, to = NA_character_, stringsAsFactors = FALSE))
             } else {
                 parts <- strsplit(gsub("\\$", ".", path), "\\.", fixed = FALSE)[[1]]
-                nmv <- sample(pii_names, 1)
+                nmv <- sample(synthetic_name_tokens, 1)
                 f <- function(v) {
                     if (is.list(v)) return(lapply(v, function(z) if (is.character(z) && length(z)) nmv else z))
                     if (is.character(v) && length(v)) return(rep(nmv, length(v)))
@@ -247,14 +247,14 @@ injector <- function(atoms,
                 r <- set_by_path(atoms[[i]], parts, f)
                 atoms[[i]] <- r$x
                 log <- rbind(log, data.frame(AtomID = atoms[[i]]$Header$AtomID %||% NA_character_,
-                                             path = path, action = "PII inject", existed = r$e,
+                                             path = path, action = "Synthetic name token", existed = r$e,
                                              from = if (r$e) paste(unlist(r$o), collapse = " | ") else NA_character_,
                                              to   = if (r$e) paste(unlist(r$n), collapse = " | ") else NA_character_,
                                              stringsAsFactors = FALSE))
             }
         }
     }
-    
+
     if (enable_gap && length(idx_gap)) {                                                  # temporal gaps
         get_num <- function(x) suppressWarnings(as.numeric((x %||% NA_real_)[1]))
         idx_other <- setdiff(idx_all, idx_gap)
@@ -303,23 +303,23 @@ injector <- function(atoms,
                                          from = as.character(round(gap0, 3)), to = as.character(round(gap1, 3)), stringsAsFactors = FALSE))
         }
     }
-    
+
     if (enable_duplicate && length(idx_dup)) {                                             # duplicates
         dupe <- atoms[idx_dup]
         atoms <- c(atoms, dupe)
-        
+
         dup_ids <- vapply(dupe, function(a) a$Header$AtomID %||% NA_character_, character(1))
         log <- rbind(log, data.frame(AtomID = dup_ids, path = NA_character_, action = "Atom duplicated", existed = TRUE,
                                      from = NA_character_, to = NA_character_, stringsAsFactors = FALSE))
-        
+
         # also record originals as truth (same AtomIDs, because duplicates are exact copies)
         log <- rbind(log, data.frame(AtomID = dup_ids, path = NA_character_, action = "Atom duplicated (pair)", existed = TRUE,
                                      from = NA_character_, to = NA_character_, stringsAsFactors = FALSE))
     }
-    
+
     summary <- data.frame(
-        error_type = c("Field removed","Type change","String corrupt","PII inject","Temporal gap","Atom duplicated","Total unique"),
-        atoms_affected = c(length(idx_rm), length(idx_ty), length(idx_sc), length(idx_pii), length(idx_gap), length(idx_dup), length(unique(idx_all))),
+        error_type = c("Field removed","Type change","String corrupt","Synthetic name token","Temporal gap","Atom duplicated","Total unique"),
+        atoms_affected = c(length(idx_rm), length(idx_ty), length(idx_sc), length(idx_synth), length(idx_gap), length(idx_dup), length(unique(idx_all))),
         k_drawn = k,
         pct_min = pct_min,
         pct_max = pct_max,
@@ -327,7 +327,7 @@ injector <- function(atoms,
         seed_k = seed_k,
         stringsAsFactors = FALSE
     )
-    
+
     dt <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")), 3)
     list(atoms = atoms, changelog = log, summary = summary, seconds = dt)
 }
@@ -350,18 +350,18 @@ validator <- function(atoms,
                       run_TEST5 = TRUE,
                       run_TEST6 = TRUE,
                       run_TEST7 = TRUE) {
-    
+
     get_path <- function(x, p) {                                                          # safe getter
         for (k in p) { if (!is.list(x) || is.null(x[[k]])) return(NULL); x <- x[[k]] }
         x
     }
-    
+
     github_raw <- function(u) sub("https://github.com/([^/]+)/([^/]+)/blob/([^?]+).*", "https://raw.githubusercontent.com/\\1/\\2/\\3", u)
     to_src <- function(p) if (grepl("^https?://", p)) github_raw(p) else p
-    
+
     norm_col <- function(x) tolower(gsub("[^a-z]", "", x))
     get_col <- function(df, target) { cn <- norm_col(names(df)); j <- which(cn == norm_col(target)); if (length(j)) j[1] else NA_integer_ }
-    
+
     read_name_cols <- function(path, col_targets) {
         df <- read.csv(to_src(path), stringsAsFactors = FALSE, check.names = FALSE)
         out <- character(0)
@@ -369,24 +369,24 @@ validator <- function(atoms,
         out <- tolower(trimws(out))
         unique(out[nzchar(out) & !is.na(out)])
     }
-    
+
     load_name_set <- function(paths, col_targets) {
         if (!length(paths)) return(character(0))
         unique(unlist(lapply(paths, read_name_cols, col_targets = col_targets), use.names = FALSE))
     }
-    
+
     str_flat <- function(x) {
         if (is.character(x) && length(x)) return(x)
         if (!is.list(x) || !length(x)) return(character(0))
         unlist(lapply(x, str_flat), use.names = FALSE)
     }
-    
+
     tokenise <- function(strings) {
         txt <- paste(strings, collapse = " ")
         w <- unlist(regmatches(txt, gregexpr("\\p{L}+", txt, perl = TRUE)), use.names = FALSE)
         tolower(w)
     }
-    
+
     pii_hit2 <- function(strings, forenames, surnames, win = 6) {
         nm_all <- unique(c(forenames, surnames))
         s0 <- tolower(trimws(strings))
@@ -405,20 +405,20 @@ validator <- function(atoms,
         }
         NA_character_
     }
-    
+
     pick_col_sub <- function(df, keys) {
         cn <- tolower(names(df))
         for (k in keys) { j <- which(grepl(k, cn, fixed = TRUE)); if (length(j)) return(j[1]) }
         1
     }
-    
+
     read_set <- function(path, keys) {
         df <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
         col <- pick_col_sub(df, keys)
         x <- tolower(trimws(as.character(df[[col]])))
         unique(x[nzchar(x) & !is.na(x)])
     }
-    
+
     canon <- function(x) {
         if (!is.list(x)) return(x)
         nm <- names(x) %||% character(0)
@@ -428,13 +428,13 @@ validator <- function(atoms,
         for (k in names(x)) x[[k]] <- canon(x[[k]])
         x
     }
-    
+
     sig_full <- function(a) jsonlite::toJSON(canon(a), auto_unbox = TRUE, pretty = FALSE, na = "null")
-    
+
     n <- length(atoms)
     ids <- vapply(atoms, function(a) { x <- get_path(a, c("Header","AtomID")); if (is.character(x) && length(x)) x[1] else NA_character_ }, character(1))
     ids[is.na(ids) | !nzchar(ids)] <- paste0("index_", which(is.na(ids) | !nzchar(ids)))
-    
+
     allow_label <- character(0)
     allow_code  <- character(0)
     if (run_TEST4) {
@@ -444,7 +444,7 @@ validator <- function(atoms,
         allow_label <- unique(c(allow_b, allow_r))
         allow_code  <- unique(allow_c)
     }
-    
+
     forenames <- character(0)
     surnames  <- character(0)
     if (run_TEST5) {
@@ -452,13 +452,13 @@ validator <- function(atoms,
         forenames <- load_name_set(pii_forename_csvs, name_cols)
         surnames  <- load_name_set(pii_surname_csvs,  name_cols)
     }
-    
+
     dup_sig <- rep(FALSE, n)
     if (run_TEST6) {
         sig <- vapply(atoms, sig_full, "")
         dup_sig <- duplicated(sig) | duplicated(sig, fromLast = TRUE)
     }
-    
+
     gap_ids <- character(0)
     if (run_TEST7) {
         pid <- vapply(atoms, function(a) { x <- get_path(a, c("Who","ParticipantID")); if (is.character(x) && length(x)) x[1] else NA_character_ }, character(1))
@@ -477,16 +477,16 @@ validator <- function(atoms,
             ids[c(prv[hit], nxt[hit])]
         }), use.names = FALSE))
     }
-    
+
     out_tests  <- vector("list", n)
     out_detail <- vector("list", n)
-    
+
     for (i in seq_len(n)) {
         a <- atoms[[i]]
         id <- ids[i]
         tests <- character(0)
         dets  <- character(0)
-        
+
         if (run_TEST1) {
             miss <- character(0)
             if (is.null(get_path(a, c("Header")))) miss <- c(miss, "Header")
@@ -495,7 +495,7 @@ validator <- function(atoms,
             if (is.null(get_path(a, c("Who"))))    miss <- c(miss, "Who")
             if (length(miss)) { tests <- c(tests, "TEST1"); dets <- c(dets, paste("TEST1:", paste(miss, collapse = " | "))) }
         }
-        
+
         if (run_TEST2) {
             miss <- character(0)
             if (is.null(get_path(a, c("Header","AtomVersion")))) miss <- c(miss, "Header.AtomVersion")
@@ -506,7 +506,7 @@ validator <- function(atoms,
             if (is.null(get_path(a, c("Who","ParticipantID"))))  miss <- c(miss, "Who.ParticipantID")
             if (length(miss)) { tests <- c(tests, "TEST2"); dets <- c(dets, paste("TEST2:", paste(miss, collapse = " | "))) }
         }
-        
+
         if (run_TEST3) {
             bad <- character(0)
             hdr <- get_path(a, c("Header")); whn <- get_path(a, c("When")); wht <- get_path(a, c("What")); who <- get_path(a, c("Who"))
@@ -531,7 +531,7 @@ validator <- function(atoms,
             }
             if (length(bad)) { tests <- c(tests, "TEST3"); dets <- c(dets, paste("TEST3:", paste(unique(bad), collapse = " | "))) }
         }
-        
+
         if (run_TEST4) {
             lb <- get_path(a, c("What","Label"))
             lab <- if (is.null(lb)) character(0) else tolower(trimws(unlist(lb)))
@@ -541,22 +541,22 @@ validator <- function(atoms,
                 if (length(bad)) { tests <- c(tests, "TEST4"); dets <- c(dets, paste("TEST4:", paste(bad, collapse = " | "))) }
             }
         }
-        
+
         if (run_TEST5) {
             if (length(forenames) && length(surnames)) {
                 hit <- pii_hit2(str_flat(a), forenames, surnames)
                 if (!is.na(hit)) { tests <- c(tests, "TEST5"); dets <- c(dets, paste("TEST5:", hit)) }
             }
         }
-        
+
         if (run_TEST6 && dup_sig[i]) { tests <- c(tests, "TEST6"); dets <- c(dets, "TEST6: content_duplicate_full") }
-        
+
         if (run_TEST7 && (id %in% gap_ids)) { tests <- c(tests, "TEST7"); dets <- c(dets, paste0("TEST7: gap>", gap_threshold_sec, "s")) }
-        
+
         out_tests[[i]] <- unique(tests)
         out_detail[[i]] <- unique(dets)
     }
-    
+
     keep <- vapply(out_tests, length, integer(1)) > 0
     vio <- data.frame(
         AtomID = ids[keep],
@@ -564,7 +564,7 @@ validator <- function(atoms,
         detail = vapply(out_detail[keep], function(x) paste(x, collapse = " ; "), ""),
         stringsAsFactors = FALSE
     )
-    
+
     list(violations = vio, total_atoms = n)
 }
 
@@ -589,22 +589,16 @@ evaluator_any <- function(changelog, violations, total_atoms) {                 
 }
 
 # ============================================================
-# PII NAME POOL (fixed size, reproducible per stream + run_id)
+# SYNTHETIC NAME TOKEN POOL
 # ============================================================
 
-pii_name_pool <- function(seed, n = 80) {                                                # generate names
-    loc_all <- charlatan_locales()$Name                                                     # locales
-    ok <- vapply(loc_all, function(z) !inherits(try(ch_name(n = 1, locale = z), silent = TRUE), "try-error"), logical(1))
-    loc <- loc_all[ok]
-    set.seed(seed)
-    out <- unique(unlist(lapply(sample(loc, min(10, length(loc))), function(z) ch_name(10, locale = z)), use.names = FALSE))
-    out <- out[nzchar(out)]
-    if (length(out) < n) out <- rep(out, length.out = n)
-    out[seq_len(n)]
+synthetic_name_token_pool <- function(n = 80) {
+    sprintf("SYNTHETIC_NAME_TOKEN_%03d", seq_len(n))
 }
 
-pii_names <- pii_name_pool(seed_from_key(paste(stream, run_id, "PII_POOL", sep = "|")), n = 80)  # pool
-write.csv(data.frame(pii_names = pii_names, stringsAsFactors = FALSE), file.path(out_root, "pii_name_pool.csv"), row.names = FALSE)
+synthetic_name_tokens <- synthetic_name_token_pool(n = 80)
+write.csv(data.frame(synthetic_name_tokens = synthetic_name_tokens, stringsAsFactors = FALSE),
+          file.path(out_root, "synthetic_name_token_pool.csv"), row.names = FALSE)
 
 # ============================================================
 # CQ DEFINITIONS
@@ -619,7 +613,7 @@ cq_plan <- data.frame(
     enable_remove = c(TRUE,  FALSE, FALSE, FALSE, FALSE),
     enable_type_change = c(FALSE, TRUE,  FALSE, FALSE, FALSE),
     enable_string_corrupt = c(FALSE, FALSE, TRUE,  FALSE, FALSE),
-    enable_pii_inject = c(FALSE, FALSE, FALSE, FALSE, FALSE),   # not used in CQ1-5
+    enable_synthetic_name_token = c(FALSE, FALSE, FALSE, FALSE, FALSE), # not used in CQ1-5
     enable_duplicate = c(FALSE, FALSE, FALSE, TRUE,  FALSE),    # CQ4 duplicates
     enable_gap = c(FALSE, FALSE, FALSE, FALSE, TRUE),           # CQ5 gaps
     stringsAsFactors = FALSE
@@ -651,20 +645,20 @@ all_metrics <- vector("list", nrow(cq_plan))                                    
 all_seeded_summary <- vector("list", nrow(cq_plan))                                      # store seeding summary
 
 for (i in seq_len(nrow(cq_plan))) {
-    
+
     cq <- cq_plan$cq[i]                                                                     # cq label
     seed_main <- seeds$seed[seeds$cq == cq][1]                                              # main seed
     seed_k <- seed_from_key(paste(stream, run_id, cq, "K", sep = "|"))                      # k seed
-    
+
     cq_dir <- file.path(out_root, cq)                                                       # cq output dir
     dir.create(cq_dir, recursive = TRUE, showWarnings = FALSE)
-    
+
     inj <- injector(atoms = atoms_base,
                     pct_min = pct_min, pct_max = pct_max,
                     enable_remove = cq_plan$enable_remove[i],
                     enable_type_change = cq_plan$enable_type_change[i],
                     enable_string_corrupt = cq_plan$enable_string_corrupt[i],
-                    enable_pii_inject = cq_plan$enable_pii_inject[i],
+                    enable_synthetic_name_token = cq_plan$enable_synthetic_name_token[i],
                     enable_duplicate = cq_plan$enable_duplicate[i],
                     enable_gap = cq_plan$enable_gap[i],
                     gap_threshold_sec = gap_threshold_sec,
@@ -672,21 +666,21 @@ for (i in seq_len(nrow(cq_plan))) {
                     remove_pool = mand_pool,
                     type_change_pool = mand_pool,
                     string_pool = string_pool,
-                    pii_names = pii_names,
+                    synthetic_name_tokens = synthetic_name_tokens,
                     seed_main = seed_main,
                     seed_k = seed_k)
-    
+
     write_json_pretty(inj$atoms, file.path(cq_dir, paste0("payload_seeded_", cq, ".json")))  # seeded payload
     write.csv(inj$changelog, file.path(cq_dir, paste0("changelog_", cq, ".csv")), row.names = FALSE) # changelog
     write.csv(inj$summary, file.path(cq_dir, paste0("seed_summary_", cq, ".csv")), row.names = FALSE) # seed summary
-    
+
     run1 <- list(run_TEST1 = FALSE, run_TEST2 = FALSE, run_TEST3 = FALSE, run_TEST4 = FALSE, run_TEST5 = FALSE, run_TEST6 = FALSE, run_TEST7 = FALSE) # init
     if (cq == "CQ1") { run1$run_TEST1 <- TRUE; run1$run_TEST2 <- TRUE }                    # missing fields hits TEST1/2
     if (cq == "CQ2") { run1$run_TEST3 <- TRUE }                                            # type change hits TEST3
     if (cq == "CQ3") { run1$run_TEST4 <- TRUE }                                            # string corrupt hits TEST4
     if (cq == "CQ4") { run1$run_TEST6 <- TRUE }                                            # duplicates hits TEST6
     if (cq == "CQ5") { run1$run_TEST7 <- TRUE }                                            # gaps hits TEST7
-    
+
     val <- validator(inj$atoms,
                      registry_behaviour = registry_behaviour,
                      registry_rest = registry_rest,
@@ -696,13 +690,13 @@ for (i in seq_len(nrow(cq_plan))) {
                      pii_surname_csvs = pii_surname_csv,
                      run_TEST1 = run1$run_TEST1, run_TEST2 = run1$run_TEST2, run_TEST3 = run1$run_TEST3,
                      run_TEST4 = run1$run_TEST4, run_TEST5 = run1$run_TEST5, run_TEST6 = run1$run_TEST6, run_TEST7 = run1$run_TEST7)
-    
+
     write.csv(val$violations, file.path(cq_dir, paste0("violations_", cq, ".csv")), row.names = FALSE)  # violations
-    
+
     ids_seeded <- vapply(inj$atoms, function(a) (a$Header$AtomID %||% NA_character_)[1], "")            # ids
     chg <- inj$changelog                                                                            # changelog
     chg <- chg[chg$existed == TRUE & chg$AtomID %in% ids_seeded, , drop = FALSE]                     # keep valid ids
-    
+
     met <- evaluator_any(chg, val$violations, length(inj$atoms))                                     # metrics
     met$cq <- cq                                                                                    # add
     met$stream <- stream                                                                            # add
@@ -712,9 +706,9 @@ for (i in seq_len(nrow(cq_plan))) {
     met$k_drawn <- inj$summary$k_drawn[1]                                                            # add
     met$pct_min <- pct_min                                                                           # add
     met$pct_max <- pct_max                                                                           # add
-    
+
     write.csv(met, file.path(cq_dir, paste0("metrics_any_", cq, ".csv")), row.names = FALSE)         # metrics file
-    
+
     all_metrics[[i]] <- met                                                                          # collect
     all_seeded_summary[[i]] <- cbind(data.frame(cq = cq, stream = stream, run_id = run_id, stringsAsFactors = FALSE), inj$summary) # collect
 }

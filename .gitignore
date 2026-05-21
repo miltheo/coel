@@ -1,11 +1,19 @@
-.Rproj.user
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
 
 # Local application workspace; excluded from the public COEL v2.0 release.
 app/
+rsconnect/
 
 utilities/data/atoms_participants/behavioural_bout/
+utilities/data/atoms_participants/rest_activity/*_rest_activity_atoms.json
 utilities/data/atoms_payload/behavioural_bout/
+utilities/data/atoms_payload/rest_activity/coel_atoms_payload.json
+utilities/data/atoms_payload/rest_activity/coel_atoms_payload.json.gz
+utilities/data/atoms_payload/rest_activity/coel_atoms_payload.jsonld
+utilities/data/atoms_payload/rest_activity/coel_atoms_payload.jsonld.gz
+utilities/data/atoms_payload/*/seeded_payload*/
 utilities/data/research_paper_results/

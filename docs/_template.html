@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><!-- Page title --> | COEL v2.0</title>
+  <meta name="description" content="<!-- Concise page summary for search, previews, and accessibility. -->">
+  <title>COEL v2.0 | <!-- Page title --></title>
   <link rel="stylesheet" href="assets/coel.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="./">COEL v2.0</a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="./">Overview</a>
+        <a href="namespace/">Namespace</a>
         <a href="atom/2.0/">Atom</a>
         <a href="models/">Models</a>
         <a href="mapping/">Mappings</a>
-        <a href="utilities/jsonld/">JSON-LD</a>
-        <a href="w3id-redirects.md">w3id</a>
+        <a href="utilities/">Utilities</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <p class="breadcrumb"><a href="./">COEL v2.0</a> / <!-- Parent --> / <!-- Current --></p>
     <p class="kicker"><!-- Resource category --></p>
     <h1><!-- Resource name --></h1>
@@ -38,7 +40,7 @@
       </div>
       <div>
         <dt>Role</dt>
-        <dd><!-- Normative / derived / supplementary --></dd>
+        <dd><!-- Canonical CSV registry / JSON Schema / mapping CSV / derived TTL / projection resource --></dd>
       </div>
     </dl>
 
@@ -46,11 +48,12 @@
       <h2 id="files-heading">Files</h2>
       <div class="table-wrap">
         <table>
+          <caption><!-- Short table description. --></caption>
           <thead>
             <tr>
-              <th>File</th>
-              <th>Path</th>
-              <th>Role</th>
+              <th scope="col">File</th>
+              <th scope="col">Path</th>
+              <th scope="col">Role</th>
             </tr>
           </thead>
           <tbody>

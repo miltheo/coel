@@ -1,0 +1,23 @@
+{
+  "Header": {
+    "AtomVersion": "2.0",
+    "AtomIRI": "https://w3id.org/coel/atom/2.0"
+  },
+  "When": {
+    "TimeISO": "2026-01-01T00:00:00Z",
+    "Duration": 60
+  },
+  "What": {
+    "Label": [
+      "Rest",
+      "13.1"
+    ],
+    "LabelIRI": [
+      "https://w3id.org/coel/models/activinsights/rest_activity/1.0#Rest",
+      "https://w3id.org/coel/models/coel/2.0#13.1"
+    ]
+  },
+  "Who": {
+    "EnvironmentID": "synthetic-example-environment"
+  }
+}

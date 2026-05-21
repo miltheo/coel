@@ -10,7 +10,7 @@ These resources are provided for reference, continuity, and comparison with late
 
 ## Notes
 
-- COEL v1.0 is an official OASIS standard.
+- COEL v1.0 is an OASIS standard.
 - This folder is included to preserve access to the legacy COEL Model v1.0 resources.
 - Users seeking the corrected and versioned repository resources developed for the COEL v2.0 ecosystem should refer to `https://w3id.org/coel/models/coel/2.0/`.
 
