@@ -20,7 +20,7 @@ Repository:
 https://github.com/miltheo/coel
 ```
 
-All redirects use `302` for release testing.
+Redirects currently use HTTP `302` status codes.
 
 ## Maintainer
 
@@ -34,7 +34,7 @@ All redirects use `302` for release testing.
 - Concrete schema, registry, mapping, and derived TTL artefact paths redirect to raw GitHub files.
 - Model term IRIs use fragment identifiers from the registry CSV `iri` columns. Fragments are resolved by clients after the base model path redirects.
 - JSON-LD is included only as optional projection support.
-- Non-public implementation/deployment routes, slug aliases, and derived JSON serialisation routes are intentionally excluded.
+- Non-public implementation routes, slug aliases, and derived JSON serialisation routes are intentionally excluded.
 
 ## HTML Routes
 
@@ -74,34 +74,3 @@ All redirects use `302` for release testing.
 | w3id route | Target |
 |---|---|
 | `https://w3id.org/coel/utilities/jsonld/context.jsonld` | `https://raw.githubusercontent.com/miltheo/coel/main/utilities/jsonld/context.jsonld` |
-
-## Test Commands
-
-Run these after the w3id pull request is deployed:
-
-```sh
-curl -I https://w3id.org/coel/
-curl -I https://w3id.org/coel/namespace/
-curl -I https://w3id.org/coel/atom/2.0/
-curl -I https://w3id.org/coel/models/
-curl -I https://w3id.org/coel/models/coel/2.0/
-curl -I https://w3id.org/coel/models/activinsights/
-curl -I https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/
-curl -I https://w3id.org/coel/models/activinsights/rest_activity/1.0/
-curl -I https://w3id.org/coel/mapping/
-curl -I https://w3id.org/coel/utilities/
-curl -I https://w3id.org/coel/utilities/jsonld/
-curl -I https://w3id.org/coel/atom/2.0/coel-atom.json
-curl -I https://w3id.org/coel/atom/2.0/extension-registry.csv
-curl -I https://w3id.org/coel/models/coel/2.0/coel-model-v2.0.csv
-curl -I https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.csv
-curl -I https://w3id.org/coel/models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.csv
-curl -I https://w3id.org/coel/mapping/behavioural-bout-model-v1.0-to-coel-model-v2.0.csv
-curl -I https://w3id.org/coel/mapping/rest-activity-model-v1.0-to-coel-model-v2.0.csv
-curl -I https://w3id.org/coel/models/coel/2.0/coel-model-v2.0.ttl
-curl -I https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.ttl
-curl -I https://w3id.org/coel/models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.ttl
-curl -I https://w3id.org/coel/mapping/behavioural-bout-model-v1.0-to-coel-model-v2.0.ttl
-curl -I https://w3id.org/coel/mapping/rest-activity-model-v1.0-to-coel-model-v2.0.ttl
-curl -I https://w3id.org/coel/utilities/jsonld/context.jsonld
-```

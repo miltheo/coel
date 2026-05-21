@@ -1,8 +1,8 @@
-# Internal w3id Redirect Plan
+# w3id Redirect Summary
 
-This internal note mirrors the PR-ready w3id configuration in `w3id/coel/.htaccess`.
+This page summarises the public w3id.org routes for the COEL v2.0 artefact bundle.
 
-Use temporary `302` redirects for release testing. The expected GitHub Pages base URL is:
+The expected GitHub Pages base URL is:
 
 ```text
 https://miltheo.github.io/coel/
@@ -14,55 +14,8 @@ https://miltheo.github.io/coel/
 - Concrete schema, registry, mapping, and derived TTL artefact paths resolve to raw GitHub file URLs.
 - Model term fragment IRIs resolve through the base model path because URL fragments are handled by clients and are not sent to the server.
 - JSON-LD routes are optional projection support, not the core COEL v2.0 identity.
-- Non-public implementation/deployment routes, slug aliases, and derived JSON serialisation routes are intentionally excluded.
+- Non-public implementation routes, slug aliases, and derived JSON serialisation routes are intentionally excluded.
 
-## `.htaccess`
+## Route Configuration
 
-```apache
-Options +FollowSymLinks
-RewriteEngine On
-
-# COEL v2.0 namespace and collection pages.
-# Keep all redirects as 302 while the public release is being tested.
-RewriteRule ^$ https://miltheo.github.io/coel/ [R=302,L]
-RewriteRule ^namespace/?$ https://miltheo.github.io/coel/namespace/ [R=302,L]
-RewriteRule ^atom/2\.0/?$ https://miltheo.github.io/coel/atom/2.0/ [R=302,L]
-RewriteRule ^models/?$ https://miltheo.github.io/coel/models/ [R=302,L]
-RewriteRule ^models/coel/2\.0/?$ https://miltheo.github.io/coel/models/coel/2.0/ [R=302,L]
-RewriteRule ^models/activinsights/?$ https://miltheo.github.io/coel/models/activinsights/ [R=302,L]
-RewriteRule ^models/activinsights/behavioural_bout/1\.0/?$ https://miltheo.github.io/coel/models/activinsights/behavioural_bout/1.0/ [R=302,L]
-RewriteRule ^models/activinsights/rest_activity/1\.0/?$ https://miltheo.github.io/coel/models/activinsights/rest_activity/1.0/ [R=302,L]
-RewriteRule ^mapping/?$ https://miltheo.github.io/coel/mapping/ [R=302,L]
-RewriteRule ^utilities/?$ https://miltheo.github.io/coel/utilities/ [R=302,L]
-RewriteRule ^utilities/jsonld/?$ https://miltheo.github.io/coel/utilities/jsonld/ [R=302,L]
-
-# COEL Behavioural Atom v2.0 artefacts.
-RewriteRule ^atom/2\.0/coel-atom\.json$ https://raw.githubusercontent.com/miltheo/coel/main/atom/2.0/coel-atom.json [R=302,L]
-RewriteRule ^atom/2\.0/extension-registry\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/atom/2.0/extension-registry.csv [R=302,L]
-
-# Canonical model registry CSV artefacts.
-RewriteRule ^models/coel/2\.0/coel-model-v2\.0\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/models/coel/2.0/coel-model-v2.0.csv [R=302,L]
-RewriteRule ^models/activinsights/behavioural_bout/1\.0/behavioural-bout-model-v1\.0\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.csv [R=302,L]
-RewriteRule ^models/activinsights/rest_activity/1\.0/rest-activity-model-v1\.0\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.csv [R=302,L]
-
-# Mapping CSV artefacts.
-RewriteRule ^mapping/behavioural-bout-model-v1\.0-to-coel-model-v2\.0\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/mapping/behavioural-bout-model-v1.0-to-coel-model-v2.0.csv [R=302,L]
-RewriteRule ^mapping/rest-activity-model-v1\.0-to-coel-model-v2\.0\.csv$ https://raw.githubusercontent.com/miltheo/coel/main/mapping/rest-activity-model-v1.0-to-coel-model-v2.0.csv [R=302,L]
-
-# Derived TTL serialisations in the release bundle.
-RewriteRule ^models/coel/2\.0/coel-model-v2\.0\.ttl$ https://raw.githubusercontent.com/miltheo/coel/main/models/coel/2.0/coel-model-v2.0.ttl [R=302,L]
-RewriteRule ^models/activinsights/behavioural_bout/1\.0/behavioural-bout-model-v1\.0\.ttl$ https://raw.githubusercontent.com/miltheo/coel/main/models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.ttl [R=302,L]
-RewriteRule ^models/activinsights/rest_activity/1\.0/rest-activity-model-v1\.0\.ttl$ https://raw.githubusercontent.com/miltheo/coel/main/models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.ttl [R=302,L]
-RewriteRule ^mapping/behavioural-bout-model-v1\.0-to-coel-model-v2\.0\.ttl$ https://raw.githubusercontent.com/miltheo/coel/main/mapping/behavioural-bout-model-v1.0-to-coel-model-v2.0.ttl [R=302,L]
-RewriteRule ^mapping/rest-activity-model-v1\.0-to-coel-model-v2\.0\.ttl$ https://raw.githubusercontent.com/miltheo/coel/main/mapping/rest-activity-model-v1.0-to-coel-model-v2.0.ttl [R=302,L]
-
-# Optional JSON-LD projection support.
-RewriteRule ^utilities/jsonld/context\.jsonld$ https://raw.githubusercontent.com/miltheo/coel/main/utilities/jsonld/context.jsonld [R=302,L]
-```
-
-## Operational Checks
-
-- Enable GitHub Pages from `docs/` and confirm each HTML target resolves.
-- Confirm each raw target returns the expected content type and current file content.
-- Test fragment IRIs against the model pages and CSV registry targets.
-- Keep redirects as `302` until release testing is complete.
+The w3id redirect configuration is maintained in `w3id/coel/.htaccess`.

@@ -2,7 +2,6 @@ Options +FollowSymLinks
 RewriteEngine On
 
 # COEL v2.0 namespace and collection pages.
-# Keep all redirects as 302 while the public release is being tested.
 RewriteRule ^$ https://miltheo.github.io/coel/ [R=302,L]
 RewriteRule ^namespace/?$ https://miltheo.github.io/coel/namespace/ [R=302,L]
 RewriteRule ^atom/2\.0/?$ https://miltheo.github.io/coel/atom/2.0/ [R=302,L]
