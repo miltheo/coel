@@ -53,7 +53,6 @@ See `LICENSE`.
 ## Maintainers
 
 - **Millen J. Theophilus** (`miltheo`)
-- **Jia Ying Chua** (`ai-jyc`)
 
 ## Acknowledgements
 
