@@ -1,6 +1,6 @@
 # COEL Model Resources
 
-Canonical IRI: `https://w3id.org/coel/models/`
+IRI: [https://w3id.org/coel/models/](https://w3id.org/coel/models/)
 
 This folder contains versioned classification model resources used within the COEL ecosystem.
 
@@ -14,13 +14,13 @@ This directory supports standardised representation and use of behaviour classif
 
 This folder includes model resources for:
 
-- `coel/`  
+- [coel/](coel/)
   COEL classification model resources.
 
-- `activinsights/`  
+- [activinsights/](activinsights/)
   ActivInsights implementation-specific classification model resources.
 
-- `registry.csv`  
+- [registry.csv](registry.csv)
   Top-level registry of available model resources within the repository.
 
 ## Notes
@@ -31,6 +31,6 @@ This folder includes model resources for:
 
 ## Related resources
 
-- Repository root: `https://w3id.org/coel/`
-- Mapping resources: `https://w3id.org/coel/mapping/`
-- COEL Behavioural Atom v2.0: `https://w3id.org/coel/atom/2.0/`
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)
+- Mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)
+- COEL Behavioural Atom v2.0: [https://w3id.org/coel/atom/2.0/](https://w3id.org/coel/atom/2.0/)

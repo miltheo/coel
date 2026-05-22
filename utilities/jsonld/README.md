@@ -1,6 +1,6 @@
 # COEL JSON-LD Projection Resources
 
-Canonical IRI: `https://w3id.org/coel/utilities/jsonld/`
+IRI: [https://w3id.org/coel/utilities/jsonld/](https://w3id.org/coel/utilities/jsonld/)
 
 This folder contains JSON-LD projection resources for the COEL v2.0 ecosystem.
 
@@ -10,7 +10,7 @@ The resources in this folder support optional JSON-LD projection of valid COEL B
 
 ## Included artefacts
 
-- `context.jsonld`
+- [context.jsonld](context.jsonld)
   JSON-LD context file for COEL Behavioural Atom v2.0 projection.
 
 ## Context assumptions
@@ -53,7 +53,7 @@ This context does not itself mint RDF subject identifiers. Atom-level `@id` valu
 
 ## Related resources
 
-- Context file: `https://w3id.org/coel/utilities/jsonld/context.jsonld`
-- COEL Behavioural Atom v2.0: `https://w3id.org/coel/atom/2.0/`
-- COEL mapping resources: `https://w3id.org/coel/mapping/`
-- Repository root: `https://w3id.org/coel/`
+- Context file: [https://w3id.org/coel/utilities/jsonld/context.jsonld](https://w3id.org/coel/utilities/jsonld/context.jsonld)
+- COEL Behavioural Atom v2.0: [https://w3id.org/coel/atom/2.0/](https://w3id.org/coel/atom/2.0/)
+- COEL mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)

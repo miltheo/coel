@@ -1,6 +1,6 @@
 # ActivInsights Rest Activity Model v1.0
 
-Canonical IRI: `https://w3id.org/coel/models/activinsights/rest_activity/1.0/`
+IRI: [https://w3id.org/coel/models/activinsights/rest_activity/1.0/](https://w3id.org/coel/models/activinsights/rest_activity/1.0/)
 
 This folder contains the versioned public resources for **ActivInsights Rest Activity Model v1.0**.
 
@@ -8,13 +8,13 @@ This model is provided as an implementation-specific behaviour classification re
 
 ## Included artefacts
 
-- `rest-activity-model-v1.0.csv`  
+- [rest-activity-model-v1.0.csv](rest-activity-model-v1.0.csv)
   Tabular registry for the model.
 
-- `rest-activity-model-v1.0.json`  
+- [rest-activity-model-v1.0.json](rest-activity-model-v1.0.json)
   JSON serialisation of the model registry.
 
-- `rest-activity-model-v1.0.ttl`  
+- [rest-activity-model-v1.0.ttl](rest-activity-model-v1.0.ttl)
   RDF/Turtle serialisation of the model registry.
 
 ## Notes
@@ -24,6 +24,6 @@ This model is provided as an implementation-specific behaviour classification re
 
 ## Related resources
 
-- ActivInsights model resources: `https://w3id.org/coel/models/activinsights/`
-- COEL Model v2.0: `https://w3id.org/coel/models/coel/2.0/`
-- Mapping resources: `https://w3id.org/coel/mapping/`
+- ActivInsights model resources: [https://w3id.org/coel/models/activinsights/](https://w3id.org/coel/models/activinsights/)
+- COEL Model v2.0: [https://w3id.org/coel/models/coel/2.0/](https://w3id.org/coel/models/coel/2.0/)
+- Mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)

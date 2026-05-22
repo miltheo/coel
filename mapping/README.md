@@ -1,6 +1,6 @@
 # COEL Mapping Resources
 
-Canonical IRI: `https://w3id.org/coel/mapping/`
+IRI: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)
 
 This folder contains mapping artefacts used to relate external or implementation-specific behaviour models to **COEL Model v2.0**.
 
@@ -8,16 +8,16 @@ These resources support cross-model interoperability, harmonisation, and semanti
 
 ## Included artefacts
 
-- `behavioural-bout-model-v1.0-to-coel-model-v2.0.csv`  
+- [behavioural-bout-model-v1.0-to-coel-model-v2.0.csv](behavioural-bout-model-v1.0-to-coel-model-v2.0.csv)
   Tabular mapping file relating the ActivInsights Behavioural Bout Model v1.0 to COEL Model v2.0.
 
-- `behavioural-bout-model-v1.0-to-coel-model-v2.0.ttl`  
+- [behavioural-bout-model-v1.0-to-coel-model-v2.0.ttl](behavioural-bout-model-v1.0-to-coel-model-v2.0.ttl)
   RDF/Turtle serialisation of the Behavioural Bout Model v1.0 to COEL Model v2.0 mapping.
 
-- `rest-activity-model-v1.0-to-coel-model-v2.0.csv`  
+- [rest-activity-model-v1.0-to-coel-model-v2.0.csv](rest-activity-model-v1.0-to-coel-model-v2.0.csv)
   Tabular mapping file relating the ActivInsights Rest Activity Model v1.0 to COEL Model v2.0.
 
-- `rest-activity-model-v1.0-to-coel-model-v2.0.ttl`  
+- [rest-activity-model-v1.0-to-coel-model-v2.0.ttl](rest-activity-model-v1.0-to-coel-model-v2.0.ttl)
   RDF/Turtle serialisation of the Rest Activity Model v1.0 to COEL Model v2.0 mapping.
 
 ## Notes
@@ -29,5 +29,5 @@ These resources support cross-model interoperability, harmonisation, and semanti
 
 ## Related resources
 
-- Repository root: `https://w3id.org/coel/`
-- COEL Model v2.0: `https://w3id.org/coel/models/coel/2.0/`
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)
+- COEL Model v2.0: [https://w3id.org/coel/models/coel/2.0/](https://w3id.org/coel/models/coel/2.0/)

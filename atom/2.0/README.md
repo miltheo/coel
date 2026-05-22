@@ -1,6 +1,6 @@
 # COEL Behavioural Atom v2.0
 
-Canonical IRI: `https://w3id.org/coel/atom/2.0/`
+IRI: [https://w3id.org/coel/atom/2.0/](https://w3id.org/coel/atom/2.0/)
 
 This folder contains the public resources for COEL Behavioural Atom v2.0, a versioned JSON-based structure for representing behavioural events with temporal, contextual, provenance, and optional extension information.
 
@@ -12,13 +12,13 @@ The exchange format is JSON.
 
 ## Included artefacts
 
-- `coel-atom.json`  
+- [coel-atom.json](coel-atom.json)
   JSON Schema for COEL Behavioural Atom v2.0.
 
-- `extension-registry.csv`  
-  Example registry of extension fields supported by the Atom v2.0 structure.
+- [extension-registry.csv](extension-registry.csv)
+  Registry of extension fields supported by the Atom v2.0 structure.
 
-- `examples/minimal-atom-example.json`
+- [examples/minimal-atom-example.json](examples/minimal-atom-example.json)
   Clearly synthetic minimal Atom instance for schema inspection. It is not derived from participant, device, or evaluation data.
 
 ## Summary of structure
@@ -59,6 +59,6 @@ Together, these elements support representation of:
 
 ## Related resources
 
-- Repository root: `https://w3id.org/coel/`
-- COEL Model v2.0: `https://w3id.org/coel/models/coel/2.0/`
-- JSON-LD projection resources: `https://w3id.org/coel/utilities/jsonld/`
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)
+- COEL Model v2.0: [https://w3id.org/coel/models/coel/2.0/](https://w3id.org/coel/models/coel/2.0/)
+- JSON-LD projection resources: [https://w3id.org/coel/utilities/jsonld/](https://w3id.org/coel/utilities/jsonld/)

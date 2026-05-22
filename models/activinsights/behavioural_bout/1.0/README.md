@@ -1,6 +1,6 @@
 # ActivInsights Behavioural Bout Model v1.0
 
-Canonical IRI: `https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/`
+IRI: [https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/](https://w3id.org/coel/models/activinsights/behavioural_bout/1.0/)
 
 This folder contains the versioned public resources for **ActivInsights Behavioural Bout Model v1.0**.
 
@@ -8,13 +8,13 @@ This model is provided as an implementation-specific behaviour classification re
 
 ## Included artefacts
 
-- `behavioural-bout-model-v1.0.csv`  
-  Canonical CSV registry for the model.
+- [behavioural-bout-model-v1.0.csv](behavioural-bout-model-v1.0.csv)
+  CSV registry for the model.
 
-- `behavioural-bout-model-v1.0.json`  
+- [behavioural-bout-model-v1.0.json](behavioural-bout-model-v1.0.json)
   Derived JSON serialisation of the model registry.
 
-- `behavioural-bout-model-v1.0.ttl`  
+- [behavioural-bout-model-v1.0.ttl](behavioural-bout-model-v1.0.ttl)
   Derived RDF/Turtle serialisation of the model registry.
 
 ## Notes
@@ -24,6 +24,6 @@ This model is provided as an implementation-specific behaviour classification re
 
 ## Related resources
 
-- ActivInsights model resources: `https://w3id.org/coel/models/activinsights/`
-- COEL Model v2.0: `https://w3id.org/coel/models/coel/2.0/`
-- Mapping resources: `https://w3id.org/coel/mapping/`
+- ActivInsights model resources: [https://w3id.org/coel/models/activinsights/](https://w3id.org/coel/models/activinsights/)
+- COEL Model v2.0: [https://w3id.org/coel/models/coel/2.0/](https://w3id.org/coel/models/coel/2.0/)
+- Mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)

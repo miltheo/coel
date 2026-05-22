@@ -1,6 +1,8 @@
 # COEL
 
-This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data. It includes the COEL Behavioural Atom v2.0 JSON Schema, behaviour classification model registries, mapping files, optional semantic projection resources, documentation, and reusable utility code.
+This repository hosts the **COEL v2.0 public artefact bundle** for representing behavioural event data. It includes the COEL Behavioural Atom v2.0 JSON Schema, behaviour classification model registries, mapping files, derived serialisations, optional projection resources, documentation, and supporting utilities.
+
+Start from the live public namespace: [https://w3id.org/coel/](https://w3id.org/coel/).
 
 ## Relationship to COEL v1.0
 
@@ -8,32 +10,27 @@ This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of mac
 
 This repository is independent of OASIS and is not an OASIS publication.
 
-## Main entry points
+## Main entry point
 
-- **Root namespace:** `https://w3id.org/coel/`
-- **GitHub Pages documentation:** `https://miltheo.github.io/coel/`
-- **COEL Behavioural Atom v2.0:** `https://w3id.org/coel/atom/2.0/`
-- **COEL Model v2.0:** `https://w3id.org/coel/models/coel/2.0/`
-- **Mappings:** `https://w3id.org/coel/mapping/`
-- **JSON-LD projection resources:** `https://w3id.org/coel/utilities/jsonld/`
+- **Root namespace:** [https://w3id.org/coel/](https://w3id.org/coel/)
 
-Additional public identifiers resolve through `https://w3id.org/coel/` and are documented in `docs/`.
+Detailed documentation, artefact routes, and versioned resources are linked from the namespace pages.
 
 ## Repository structure
 
-- `atom/`
+- [atom/](atom/)
   Versioned Atom schema resources.
 
-- `models/`
+- [models/](models/)
   Versioned behaviour classification model registries and derived serialisations.
 
-- `mapping/`
+- [mapping/](mapping/)
   Mapping files linking implementation-specific models to COEL model concepts.
 
-- `utilities/`
+- [utilities/](utilities/)
   Supporting code and JSON-LD projection resources.
 
-- `docs/`
+- [docs/](docs/)
   GitHub Pages documentation and w3id namespace summary.
 
 ## Source policy
@@ -48,7 +45,7 @@ If you use these resources, please cite the relevant versioned repository releas
 
 ## Licence
 
-See `LICENSE`.
+See [LICENSE](LICENSE).
 
 ## Maintainers
 

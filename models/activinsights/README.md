@@ -1,6 +1,6 @@
 # ActivInsights Model Resources
 
-Canonical IRI: `https://w3id.org/coel/models/activinsights/`
+IRI: [https://w3id.org/coel/models/activinsights/](https://w3id.org/coel/models/activinsights/)
 
 This folder contains versioned **ActivInsights classification model resources** used within the COEL ecosystem.
 
@@ -8,10 +8,10 @@ These models are implementation-specific resources contributed as part of the br
 
 ## Included model families
 
-- `behavioural_bout/`
+- [behavioural_bout/](behavioural_bout/)
   ActivInsights Behavioural Bout Model resources.
 
-- `rest_activity/`  
+- [rest_activity/](rest_activity/)
   ActivInsights Rest Activity Model resources.
 
 ## Notes
@@ -22,6 +22,6 @@ These models are implementation-specific resources contributed as part of the br
 
 ## Related resources
 
-- Repository root: `https://w3id.org/coel/`
-- COEL model resources: `https://w3id.org/coel/models/coel/`
-- Mapping resources: `https://w3id.org/coel/mapping/`
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)
+- Model resources: [https://w3id.org/coel/models/](https://w3id.org/coel/models/)
+- Mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)

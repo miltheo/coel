@@ -1,6 +1,6 @@
 # COEL Model Resources
 
-Canonical IRI: `https://w3id.org/coel/models/coel/`
+Repository path: [models/coel/](./)
 
 This folder contains versioned **COEL classification model resources** within the COEL ecosystem.
 
@@ -8,10 +8,10 @@ These resources provide the versioned registries for the COEL behaviour classifi
 
 ## Included versions
 
-- `1.0/`  
+- [1.0/](1.0/)
   Legacy COEL Model v1.0 resources.
 
-- `2.0/`  
+- [2.0/](2.0/)
   COEL Model v2.0 resources.
 
 ## Notes
@@ -22,6 +22,7 @@ These resources provide the versioned registries for the COEL behaviour classifi
 
 ## Related resources
 
-- Repository root: `https://w3id.org/coel/`
-- COEL model resources: `https://w3id.org/coel/models/`
-- Mapping resources: `https://w3id.org/coel/mapping/`
+- Repository root: [https://w3id.org/coel/](https://w3id.org/coel/)
+- Model resources: [https://w3id.org/coel/models/](https://w3id.org/coel/models/)
+- COEL Model v2.0: [https://w3id.org/coel/models/coel/2.0/](https://w3id.org/coel/models/coel/2.0/)
+- Mapping resources: [https://w3id.org/coel/mapping/](https://w3id.org/coel/mapping/)
