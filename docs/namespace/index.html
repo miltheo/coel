@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="COEL v2.0 namespace and IRI policy, including landing pages, canonical artefact IRIs, fragment IRIs, canonical CSV registries, derived TTL serialisations, optional projection resources, and versioning.">
+  <meta name="description" content="COEL v2.0 namespace and IRI policy, including landing pages, artefact IRIs, fragment IRIs, CSV registries, derived TTL serialisations, optional projection resources, and versioning.">
   <title>COEL v2.0 | Namespace and IRI Policy</title>
   <link rel="stylesheet" href="../assets/coel.css">
 </head>
@@ -28,7 +28,7 @@
     <p class="kicker">IRI policy</p>
     <h1>Namespace and IRI policy</h1>
     <p class="lead">
-      The COEL namespace provides stable entry points for public documentation, versioned artefacts, model registries, mappings, derived serialisations, and supporting utilities.
+      The live COEL w3id namespace provides stable entry points for public documentation, versioned artefacts, model registries, mappings, derived serialisations, and supporting utilities.
     </p>
 
     <dl class="summary" aria-label="Namespace summary">
@@ -50,7 +50,7 @@
       <h2 id="resolution-heading">Resolution Policy</h2>
       <div class="table-wrap">
         <table>
-          <caption>How public COEL IRIs are expected to resolve.</caption>
+          <caption>How public COEL IRIs resolve.</caption>
           <thead>
             <tr>
               <th scope="col">IRI type</th>
@@ -108,7 +108,7 @@
               <td>Human-readable documentation and navigation.</td>
             </tr>
             <tr>
-              <td>Canonical artefact IRIs</td>
+              <td>Artefact IRIs</td>
               <td>Raw GitHub file URLs</td>
               <td>Direct retrieval of schema, registry, and mapping source files.</td>
             </tr>
@@ -132,11 +132,11 @@
       </div>
     </section>
 
-    <section aria-labelledby="canonical-heading">
-      <h2 id="canonical-heading">Canonical Artefacts</h2>
+    <section aria-labelledby="source-heading">
+      <h2 id="source-heading">Source Artefacts</h2>
       <div class="table-wrap">
         <table>
-          <caption>Source files that should be treated as canonical for release use.</caption>
+          <caption>Source files for release use.</caption>
           <thead>
             <tr>
               <th scope="col">Artefact</th>
@@ -158,17 +158,17 @@
             <tr>
               <td>COEL Model v2.0</td>
               <td><code>models/coel/2.0/coel-model-v2.0.csv</code></td>
-              <td><span class="tag">Canonical CSV registry</span></td>
+              <td><span class="tag">CSV registry</span></td>
             </tr>
             <tr>
               <td>Behavioural Bout Model v1.0</td>
               <td><code>models/activinsights/behavioural_bout/1.0/behavioural-bout-model-v1.0.csv</code></td>
-              <td><span class="tag">Canonical CSV registry</span></td>
+              <td><span class="tag">CSV registry</span></td>
             </tr>
             <tr>
               <td>Rest Activity Model v1.0</td>
               <td><code>models/activinsights/rest_activity/1.0/rest-activity-model-v1.0.csv</code></td>
-              <td><span class="tag">Canonical CSV registry</span></td>
+              <td><span class="tag">CSV registry</span></td>
             </tr>
             <tr>
               <td>Model mapping files</td>
@@ -183,14 +183,14 @@
     <section aria-labelledby="derived-heading">
       <h2 id="derived-heading">Derived Artefacts</h2>
       <p>
-        Model Turtle files are derived from canonical CSV registries. Mapping Turtle files are derived from mapping CSV files. Derived TTL files support RDF and machine-processing workflows, but they should not be edited independently of their source CSV files.
+        Model Turtle files are derived from CSV registries. Mapping Turtle files are derived from mapping CSV files. Derived TTL files support RDF and machine-processing workflows, but they should not be edited independently of their source CSV files.
       </p>
     </section>
 
     <section aria-labelledby="projection-heading">
       <h2 id="projection-heading">Optional Projection Resources</h2>
       <p>
-        JSON-LD is an optional implementation resource for projecting valid COEL Behavioural Atom JSON payloads into linked-data form. It is not the core identity of COEL v2.0 and does not replace the Atom JSON Schema, canonical CSV registries, or mapping CSV files.
+        JSON-LD is an optional implementation resource for projecting valid COEL Behavioural Atom JSON payloads into linked-data form. It is not the core identity of COEL v2.0 and does not replace the Atom JSON Schema, CSV registries, or mapping CSV files.
       </p>
       <div class="table-wrap">
         <table>
@@ -222,7 +222,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">Maintained by Millen J. Theophilus and collaborators.</div>
+    <div class="container">Maintained by Millen J. Theophilus.</div>
   </footer>
 </body>
 </html>

@@ -1,8 +1,8 @@
 # w3id Redirect Summary
 
-This page summarises the public w3id.org routes for the COEL v2.0 artefact bundle.
+This page summarises the live public w3id.org routes for the COEL v2.0 artefact bundle.
 
-The expected GitHub Pages base URL is:
+The live GitHub Pages documentation base URL is:
 
 ```text
 https://miltheo.github.io/coel/
@@ -18,4 +18,4 @@ https://miltheo.github.io/coel/
 
 ## Route Configuration
 
-The w3id redirect configuration is maintained in `w3id/coel/.htaccess`.
+The live w3id redirect configuration is maintained in `w3id/coel/.htaccess`.

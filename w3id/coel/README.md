@@ -1,6 +1,6 @@
 # COEL v2.0 w3id Configuration
 
-This directory contains the proposed w3id.org redirect configuration for the COEL v2.0 public artefact bundle.
+This directory contains the live w3id.org redirect configuration for the COEL v2.0 public artefact bundle.
 
 Namespace root:
 

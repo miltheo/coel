@@ -1,6 +1,6 @@
 # COEL
 
-This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data in interoperable, provenance-aware formats. It includes behaviour classification model registries, Atom schema resources, mapping files, optional semantic projection resources, and reusable utility code.
+This repository hosts the **COEL v2.0 ecosystem**, a versioned collection of machine-readable artefacts for representing behavioural event data. It includes the COEL Behavioural Atom v2.0 JSON Schema, behaviour classification model registries, mapping files, optional semantic projection resources, documentation, and reusable utility code.
 
 ## Relationship to COEL v1.0
 
@@ -11,13 +11,13 @@ This repository is independent of OASIS and is not an OASIS publication.
 ## Main entry points
 
 - **Root namespace:** `https://w3id.org/coel/`
-- **Expected GitHub Pages landing page:** `https://miltheo.github.io/coel/`
+- **GitHub Pages documentation:** `https://miltheo.github.io/coel/`
 - **COEL Behavioural Atom v2.0:** `https://w3id.org/coel/atom/2.0/`
 - **COEL Model v2.0:** `https://w3id.org/coel/models/coel/2.0/`
 - **Mappings:** `https://w3id.org/coel/mapping/`
 - **JSON-LD projection resources:** `https://w3id.org/coel/utilities/jsonld/`
 
-Additional persistent identifiers resolve through the repository folder structure and are documented within the corresponding subdirectory README files and `docs/`.
+Additional public identifiers resolve through `https://w3id.org/coel/` and are documented in `docs/`.
 
 ## Repository structure
 
@@ -34,11 +34,11 @@ Additional persistent identifiers resolve through the repository folder structur
   Supporting code and JSON-LD projection resources.
 
 - `docs/`
-  GitHub Pages documentation and draft w3id redirect notes.
+  GitHub Pages documentation and w3id namespace summary.
 
 ## Source policy
 
-Classification model CSV registries are the canonical model artefacts. Derived JSON and Turtle serialisations should be regenerated from the CSV registries using the reusable utilities in `utilities/code/`.
+Classification model CSV registries are the source files for model terms and stable term IRIs. Derived JSON and Turtle serialisations should be regenerated from the CSV registries using the reusable utilities in `utilities/code/`.
 
 The public release provides schemas, registries, mappings, derived serialisations, documentation, utilities, and a minimal synthetic Atom example. Private evaluation payloads, source-derived payload exports, generated validation outputs, and local application workspaces are not included as public release artefacts.
 
