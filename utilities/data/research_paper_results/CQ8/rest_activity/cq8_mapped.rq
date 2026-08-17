@@ -1,0 +1,9 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?coel (SUM(?d) AS ?sumdur)
+WHERE { { SELECT ?coel (xsd:integer(?dur) AS ?d) WHERE {
+?atom dcterms:extent ?dur ; dcterms:subject ?src .
+{ ?src skos:exactMatch ?coel } UNION { ?src skos:closeMatch ?coel } UNION
+{ ?src skos:broadMatch ?coel } UNION { ?src skos:relatedMatch ?coel } } } }
+GROUP BY ?coel

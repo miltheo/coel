@@ -1,172 +1,144 @@
-# COEL model CSV to Turtle
-# Author: Millen J. Theophilus
-# GitHub: https://github.com/miltheo
-# Licence: see repository LICENSE
+# Convert canonical COEL model tables to OWL Turtle.
 
 helper_path <- file.path("utilities", "code", "coel_utilities.R")
 if (!file.exists(helper_path)) helper_path <- "coel_utilities.R"
 source(helper_path)
 
-coel_require(c("readr", "glue", "dplyr", "jsonlite", "stringr", "tools"))
+coel_require("readr")
 
-# Helper: mint safe IRI fragments from labels ----------------------------------
-make_fragment <- function(x) {
-  x %>%
-    str_trim() %>%
-    # replace any non-alphanumeric run with underscore
-    str_replace_all("[^A-Za-z0-9]+", "_") %>%
-    # remove leading/trailing underscores
-    str_replace_all("^_+|_+$", "")
+if (!exists("make_iri_fragment", mode = "function")) {
+    make_iri_fragment <- function(x) {
+        fragment <- gsub("[^A-Za-z0-9]+", "_", trimws(x))
+        gsub("^_+|_+$", "", fragment)
+    }
 }
 
-# Generic CSV -> TTL ontology --------------------------------------------------
+escape_turtle_literal <- function(x) {
+    x <- gsub("\\\\", "\\\\\\\\", x, fixed = TRUE)
+    x <- gsub("\"", "\\\\\"", x, fixed = TRUE)
+    x <- gsub("\r", "\\\\r", x, fixed = TRUE)
+    gsub("\n", "\\\\n", x, fixed = TRUE)
+}
+
+read_ontology_terms <- function(csv_path, base_iri) {
+    terms <- readr::read_csv(
+        csv_path,
+        col_types = readr::cols(
+            label = readr::col_character(),
+            parent_label = readr::col_character(),
+            description = readr::col_character(),
+            is_output = readr::col_logical(),
+            iri = readr::col_character()
+        ),
+        show_col_types = FALSE
+    )
+    required <- c("label", "parent_label", "description", "is_output")
+    missing_columns <- setdiff(required, names(terms))
+    if (length(missing_columns)) {
+        stop("Missing model column(s): ", paste(missing_columns, collapse = ", "))
+    }
+
+    terms$iri_fragment <- make_iri_fragment(terms$label)
+    duplicate_fragments <- duplicated(terms$iri_fragment) |
+        duplicated(terms$iri_fragment, fromLast = TRUE)
+    if (any(duplicate_fragments)) {
+        stop(
+            "Duplicate IRI fragments derived from labels: ",
+            paste(unique(terms$label[duplicate_fragments]), collapse = ", ")
+        )
+    }
+    if (!"iri" %in% names(terms)) terms$iri <- NA_character_
+    missing_iri <- is.na(terms$iri) | !nzchar(terms$iri)
+    terms$iri[missing_iri] <- paste0(base_iri, "#", terms$iri_fragment[missing_iri])
+    terms
+}
+
 build_model_ontology <- function(csv_path,
                                  base_iri,
                                  ontology_iri = base_iri,
                                  out_ttl_path = "model_ontology.ttl",
                                  model_name = NULL,
-                                 prefix = NULL) {
-
-  # 1. Read canonical CSV ------------------------------------------------
-  terms <- readr::read_csv(
-    csv_path,
-    col_types = cols(
-      label        = col_character(),
-      parent_label = col_character(),
-      description   = col_character(),
-      is_output    = col_logical()
-    )
-  )
-
-  if (is.null(model_name)) {
-    model_name <- tools::file_path_sans_ext(basename(csv_path))
-  }
-
-  # 2. Preserve existing stable IRIs, minting only if the column is absent.
-  terms <- terms %>%
-    mutate(
-      iri_fragment = make_fragment(label),
-      iri = if ("iri" %in% names(terms)) {
-        dplyr::if_else(is.na(.data$iri) | .data$iri == "", paste0(base_iri, "#", iri_fragment), .data$iri)
-      } else {
-        paste0(base_iri, "#", iri_fragment)
-      }
-    )
-
-  # Check for collisions
-  if (any(duplicated(terms$iri_fragment))) {
-    dup <- terms$label[duplicated(terms$iri_fragment) |
-                         duplicated(terms$iri_fragment, fromLast = TRUE)]
-    stop("Duplicate IRI fragments derived from labels: ",
-         paste(unique(dup), collapse = ", "))
-  }
-
-  # 2b. Write IRIs back into the CSV (overwrite / update) ----------------
-  # This keeps the original columns and adds/updates the 'iri' column.
-  terms_for_csv <- terms %>%
-    select(label, parent_label, description, is_output, iri)
-
-  readr::write_csv(terms_for_csv, csv_path)
-
-  # Map label -> fragment for parent lookup
-  frag_by_label <- setNames(terms$iri_fragment, terms$label)
-
-  # Prefix handling ------------------------------------------------------
-  if (is.null(prefix)) {
-    prefix_line    <- glue("@prefix : <{base_iri}#> .")
-    ns_prefix      <- ":"                      # used as ":Fragment"
-    ann_prop_qname <- ":isDirectOutputLabel"
-  } else {
-    prefix_line    <- glue("@prefix {prefix}: <{base_iri}#> .")
-    ns_prefix      <- paste0(prefix, ":")      # e.g. "geneabout:"
-    ann_prop_qname <- paste0(prefix, ":isDirectOutputLabel")
-  }
-
-  # 3. TTL header --------------------------------------------------------
-  ttl <- c(
-    prefix_line,
-    "@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .",
-    "@prefix owl:  <http://www.w3.org/2002/07/owl#> .",
-    "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .",
-    "@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .",
-    "",
-    glue("<{ontology_iri}> rdf:type owl:Ontology ."),
-    glue("<{ontology_iri}> rdfs:label \"{model_name}\" ."),
-    "",
-    "# Annotation property to flag direct model outputs",
-    glue("{ann_prop_qname} a owl:AnnotationProperty ."),
-    ""
-  )
-
-  esc <- function(x) stringr::str_replace_all(x, "\"", "\\\\\"")
-
-  # 4. One class per label ----------------------------------------------
-  for (i in seq_len(nrow(terms))) {
-    row <- terms[i, ]
-
-    # QName for this class, e.g. geneabout:Behaviour or :Behaviour
-    class_qname <- glue("{ns_prefix}{row$iri_fragment}")
-    lab <- esc(row$label)
-
-    lines <- c(
-      glue("{class_qname} a owl:Class ;"),
-      glue("    rdfs:label \"{lab}\" ;")
-    )
-
-    # optional description as rdfs:comment
-    if (!is.na(row$description) && nzchar(row$description)) {
-      lines <- c(lines, glue("    rdfs:comment \"{esc(row$description)}\" ;"))
+                                 prefix = NULL,
+                                 update_csv = TRUE) {
+    terms <- read_ontology_terms(csv_path, base_iri)
+    if (is.null(model_name)) model_name <- tools::file_path_sans_ext(basename(csv_path))
+    if (isTRUE(update_csv)) {
+        readr::write_csv(
+            terms[c("label", "parent_label", "description", "is_output", "iri")],
+            csv_path,
+            na = "NA"
+        )
     }
 
-    # optional is_output flag
-    if (!is.na(row$is_output)) {
-      bool_str <- if (isTRUE(row$is_output)) "true" else "false"
-      lines <- c(
-        lines,
-        glue("    {ann_prop_qname} \"{bool_str}\"^^xsd:boolean ;")
-      )
-    }
-
-    # parent relationship
-    if (!is.na(row$parent_label)) {
-      parent_frag   <- frag_by_label[[row$parent_label]]
-      if (is.na(parent_frag)) {
-        stop("Parent label '", row$parent_label,
-             "' not found among labels in ", csv_path)
-      }
-      parent_qname <- glue("{ns_prefix}{parent_frag}")
-      lines <- c(
-        lines,
-        glue("    rdfs:subClassOf {parent_qname} .")
-      )
+    fragment_by_label <- setNames(terms$iri_fragment, terms$label)
+    if (is.null(prefix) || !nzchar(prefix)) {
+        prefix_line <- paste0("@prefix : <", base_iri, "#> .")
+        namespace <- ":"
     } else {
-      # no parent_label: root class
-      lines[length(lines)] <- sub(" ;$", " .", lines[length(lines)])
+        prefix_line <- paste0("@prefix ", prefix, ": <", base_iri, "#> .")
+        namespace <- paste0(prefix, ":")
+    }
+    output_property <- paste0(namespace, "isDirectOutputLabel")
+
+    ttl <- c(
+        prefix_line,
+        "@prefix owl:  <http://www.w3.org/2002/07/owl#> .",
+        "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .",
+        "@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .",
+        "",
+        paste0("<", ontology_iri, "> a owl:Ontology ;"),
+        paste0("    rdfs:label \"", escape_turtle_literal(model_name), "\" ."),
+        "",
+        paste0(output_property, " a owl:AnnotationProperty ."),
+        ""
+    )
+
+    for (i in seq_len(nrow(terms))) {
+        statements <- c(
+            paste0("    rdfs:label \"", escape_turtle_literal(terms$label[i]), "\""),
+            if (!is.na(terms$description[i]) && nzchar(terms$description[i])) {
+                paste0("    rdfs:comment \"", escape_turtle_literal(terms$description[i]), "\"")
+            },
+            if (!is.na(terms$is_output[i])) {
+                paste0(output_property, " \"", tolower(as.character(terms$is_output[i])), "\"^^xsd:boolean")
+            }
+        )
+        parent_label <- terms$parent_label[i]
+        if (!is.na(parent_label) && nzchar(parent_label)) {
+            parent_fragment <- unname(fragment_by_label[parent_label])
+            if (is.na(parent_fragment)) {
+                stop("Parent label '", parent_label, "' is not defined in ", csv_path)
+            }
+            statements <- c(statements, paste0("    rdfs:subClassOf ", namespace, parent_fragment))
+        }
+
+        class_line <- paste0(namespace, terms$iri_fragment[i], " a owl:Class ;")
+        statement_lines <- paste0(
+            statements,
+            c(rep(" ;", length(statements) - 1L), " .")
+        )
+        ttl <- c(ttl, class_line, statement_lines, "")
     }
 
-    ttl <- c(ttl, lines, "")
-  }
-
-  writeLines(ttl, out_ttl_path)
-  invisible(out_ttl_path)
+    dir.create(dirname(out_ttl_path), recursive = TRUE, showWarnings = FALSE)
+    writeLines(ttl, out_ttl_path, useBytes = TRUE)
+    invisible(out_ttl_path)
 }
 
-repo_root <- coel_repo_root()
+build_all_model_ontologies <- function(repo_root = coel_repo_root()) {
+    build_model_ontology(
+        file.path(repo_root, "models", "activinsights", "behavioural_bout", "1.0", "behavioural-bout-model-v1.0.csv"),
+        "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0",
+        out_ttl_path = file.path(repo_root, "models", "activinsights", "behavioural_bout", "1.0", "behavioural-bout-model-v1.0.ttl"),
+        model_name = "Behavioural Bout Model v1.0"
+    )
+    build_model_ontology(
+        file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.csv"),
+        "https://w3id.org/coel/models/activinsights/rest_activity/1.0",
+        out_ttl_path = file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.ttl"),
+        model_name = "Rest Activity Model v1.0"
+    )
+    invisible(TRUE)
+}
 
-build_model_ontology(
-  csv_path     = file.path(repo_root, "models", "activinsights", "behavioural_bout", "1.0", "behavioural-bout-model-v1.0.csv"),
-  base_iri     = "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0",
-  ontology_iri = "https://w3id.org/coel/models/activinsights/behavioural_bout/1.0",
-  out_ttl_path = file.path(repo_root, "models", "activinsights", "behavioural_bout", "1.0", "behavioural-bout-model-v1.0.ttl"),
-  model_name   = "Behavioural Bout Model v1.0",
-  prefix       = ""
-)
-
-build_model_ontology(
-  csv_path     = file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.csv"),
-  base_iri     = "https://w3id.org/coel/models/activinsights/rest_activity/1.0",
-  ontology_iri = "https://w3id.org/coel/models/activinsights/rest_activity/1.0",
-  out_ttl_path = file.path(repo_root, "models", "activinsights", "rest_activity", "1.0", "rest-activity-model-v1.0.ttl"),
-  model_name   = "Rest Activity Model v1.0",
-  prefix       = ""
-)
+if (sys.nframe() == 0L) build_all_model_ontologies()

@@ -1,0 +1,2 @@
+"TP","FP","FN","TN","Accuracy","Precision","Sensitivity","Specificity","F1","cq","stream","seed","k_drawn"
+48,0,0,92995,1,1,1,1,1,"CQ5","behavioural_bout",1,48

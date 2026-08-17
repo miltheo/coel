@@ -37,7 +37,7 @@ Detailed documentation, artefact routes, and versioned resources are linked from
 
 Classification model CSV registries are the source files for model terms and stable term IRIs. Derived JSON and Turtle serialisations should be regenerated from the CSV registries using the reusable utilities in `utilities/code/`.
 
-The public release provides schemas, registries, mappings, derived serialisations, documentation, utilities, and a minimal synthetic Atom example. Private evaluation payloads, source-derived payload exports, generated validation outputs, and local application workspaces are not included as public release artefacts.
+The public release provides schemas, registries, mappings, derived serialisations, documentation, utilities, and a minimal synthetic Atom example. The Semantic Web Journal replication package is contained entirely in `utilities/`: its two compressed canonical payloads are under `utilities/data/atoms_payload/`, compact reference results are under `utilities/data/research_paper_results/`, and the one-command pipeline is `utilities/code/reproduce.R`. Generated validation payloads, derived build files, and local application workspaces remain excluded from the public release.
 
 ## Citation
 

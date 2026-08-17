@@ -1,0 +1,7 @@
+"src","sumdur","duration_s","label","duration_h"
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sedentary",55558,55558,"Sedentary",15.4327777777778
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#NonWear",40294,40294,"NonWear",11.1927777777778
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Active",38728,38728,"Active",10.7577777777778
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#Sleep",32711,32711,"Sleep",9.08638888888889
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#SlowWalk",4262,4262,"SlowWalk",1.18388888888889
+"https://w3id.org/coel/models/activinsights/behavioural_bout/1.0#FastWalk",1755,1755,"FastWalk",0.4875

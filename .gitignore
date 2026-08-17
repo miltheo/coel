@@ -8,12 +8,16 @@
 app/
 rsconnect/
 
-utilities/data/atoms_participants/behavioural_bout/
-utilities/data/atoms_participants/rest_activity/*_rest_activity_atoms.json
-utilities/data/atoms_payload/behavioural_bout/
-utilities/data/atoms_payload/rest_activity/coel_atoms_payload.json
-utilities/data/atoms_payload/rest_activity/coel_atoms_payload.json.gz
-utilities/data/atoms_payload/rest_activity/coel_atoms_payload.jsonld
-utilities/data/atoms_payload/rest_activity/coel_atoms_payload.jsonld.gz
-utilities/data/atoms_payload/*/seeded_payload*/
-utilities/data/research_paper_results/
+# Manuscript replication inputs are the two tracked coel_atoms_payload.json.gz files.
+# Everything else below is derived locally by utilities/code/reproduce.R.
+utilities/data/atoms_participants/
+utilities/data/atoms_payload/**/*.json
+utilities/data/atoms_payload/**/*.jsonld
+utilities/data/atoms_payload/**/*.jsonld.gz
+utilities/data/atoms_payload/**/seeded_payload*/
+utilities/data/research_paper_results/**/payload_seeded_*.json
+utilities/data/research_paper_results/**/payload_seeded_*.json.gz
+utilities/build/
+utilities/.r-library/
+utilities/renv/library/
+utilities/renv-cache/

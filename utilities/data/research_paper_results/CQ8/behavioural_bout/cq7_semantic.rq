@@ -1,0 +1,6 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?src (SUM(?d) AS ?sumdur)
+WHERE { { SELECT ?src (xsd:integer(?dur) AS ?d)
+WHERE { ?atom dcterms:extent ?dur ; dcterms:subject ?src . } } }
+GROUP BY ?src

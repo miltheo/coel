@@ -1,0 +1,33 @@
+@base <localhost://> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest>
+    <http://www.w3.org/2004/02/skos/core#broadMatch> <https://w3id.org/coel/models/coel/2.0#13.1> .
+
+<https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake>
+    <http://www.w3.org/2004/02/skos/core#broadMatch> <https://w3id.org/coel/models/coel/2.0#14.9.3.2> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749720877%2346692%23wake>
+    <http://purl.org/dc/terms/extent> 46692 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749767569%2334041%23rest>
+    <http://purl.org/dc/terms/extent> 34041 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749801610%2331240%23wake>
+    <http://purl.org/dc/terms/extent> 31240 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749832850%237472%23rest>
+    <http://purl.org/dc/terms/extent> 7472 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#rest> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749840322%2313755%23wake>
+    <http://purl.org/dc/terms/extent> 13755 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#wake> .
+
+<urn:coel:atom:111853_1749724462_1_4032059%231749854077%2373573%23non_wear>
+    <http://purl.org/dc/terms/extent> 73573 ;
+    <http://purl.org/dc/terms/subject> <https://w3id.org/coel/models/activinsights/rest_activity/1.0#non_wear> .
+

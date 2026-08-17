@@ -1,0 +1,6 @@
+"TP","FP","FN","TN","Accuracy","Precision","Sensitivity","Specificity","F1","cq","stream","seed","k_drawn"
+26,0,0,204,1,1,1,1,1,"CQ1","rest_activity",1,26
+26,0,0,204,1,1,1,1,1,"CQ2","rest_activity",1,26
+7,0,19,204,0.917391304347826,1,0.269230769230769,1,0.424242424242424,"CQ3","rest_activity",1,26
+26,0,0,230,1,1,1,1,1,"CQ4","rest_activity",1,26
+48,0,0,135,1,1,1,1,1,"CQ5","rest_activity",1,48
