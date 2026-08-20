@@ -4,7 +4,7 @@
   "description": "The Classification of Everyday Living (COEL) Extended Digital Ecosystem provides versioned resources for representing interoperable behavioural health event data. This release includes the COEL Behavioural Atom v2.0 JSON Schema, behaviour classification model registries, mappings to COEL concepts, derived JSON and Turtle serialisations, JSON-LD projection resources, documentation, and reproducibility utilities. The accompanying Semantic Web Journal replication package contains two compressed canonical Atom payloads, compact reference results, and a one-command analysis pipeline for reproducing the reported validation, temporal retrieval, and semantic aggregation results.",
   "license": "GPL-3.0-or-later",
   "access_right": "open",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "keywords": [
     "Classification of Everyday Living",
     "COEL",
